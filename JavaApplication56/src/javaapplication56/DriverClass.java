@@ -9,7 +9,7 @@ import java.util.*;
  *
  * @author santiago
  */
-public class JavaApplication56 {
+public class DriverClass {
 
     /**
      * @param args the command line arguments
