@@ -15,19 +15,23 @@ public class DriverClass {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("test");
-        // TODO code application logic here
+        
+        //Initial Stuff
         Scanner user_input = new Scanner(System.in);
         int selection;
         boolean is_finished = false;
         String username;
         String password;
         String athlete_name;
+        
+        //Creating List of administrators
+        List<Administrator> admins = new ArrayList();
+        
         //Main window loop
         //Displays the main menu
         do{
-            System.out.printf("%s\n%50s\n%s\n%s%28s\n%50s\n%54s\n%32s\n%s","--------------------------------------------------------------","Welcome to THE sports timing platform","--------------------------------------------------------------"
-            , "Please make a selection:", "1) Login for administrators", "2) Go to the leaderboards", "3) Search and athlete by name", "4) Exit", "Selection: ");
+            System.out.printf("%s\n%50s\n%s\n%s%28s\n%50s\n%54s\n%32s\n%46s\n%s","--------------------------------------------------------------","Welcome to THE sports timing platform","--------------------------------------------------------------"
+            , "Please make a selection:", "1) Login for administrators", "2) Go to the leaderboards", "3) Search and athlete by name", "4) Exit","5) Admin Registration", "Selection: ");
             selection = user_input.nextInt();
             user_input.nextLine();
             //Main switch statement
@@ -38,6 +42,11 @@ public class DriverClass {
                     username = user_input.nextLine();
                     System.out.println("Enter your Password: ");
                     password = user_input.nextLine();
+                    Administrator new_admin = new Administrator(username,password);
+                    if(admins.contains(new_admin)){
+                        System.out.println("IM THE BEST");
+                    }
+                    
                     //temp end
                     is_finished = true;
                     break;
@@ -55,6 +64,18 @@ public class DriverClass {
                     break;
                 case 4:
                     is_finished = true;
+                    break;
+                case 5:
+                    String username_create;
+                    String password_create;
+                    System.out.println("Enter you username");
+                    username_create = user_input.nextLine();
+                    System.out.println("Enter you password");
+                    password_create = user_input.nextLine();
+                    //Creating the admin
+                    Administrator new_admin = new Administrator(username_create, password_create);
+                    admins.add(new_admin);
+                    
                     break;
                 default:
                     System.out.println("No selection was made, please select one of the 4 options");
