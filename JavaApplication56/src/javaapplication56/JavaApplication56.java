@@ -15,6 +15,7 @@ public class JavaApplication56 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        System.out.println("test");
         // TODO code application logic here
         Scanner user_input = new Scanner(System.in);
         int selection;
