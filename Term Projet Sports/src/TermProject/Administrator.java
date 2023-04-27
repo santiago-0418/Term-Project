@@ -35,4 +35,11 @@ public class Administrator {
     public void setPassword(String password) {
         this.password = password;
     }
+    
+    public void admin_menu(){
+        System.out.println("\n----------------------------------");
+        System.out.println("Helo " + this.user_name + " You are now in the admin menu");
+    }
+    
+    
 }

@@ -24,14 +24,21 @@ public class DriverClass {
         String password;
         String athlete_name;
         
-        //Creating List of administrators
-        List<Administrator> admins = new ArrayList();
+        //Initialize Admin Password Storage (will later read from file or sql database)
+        AdminStorage admin_storage = new AdminStorage();
+        UserStorage user_storage = new UserStorage();
+        
+        //Creating List of administrators (will later read from file or sql database)
+        
+        
+        //Temporary Admin added for testing purposes
+        admin_storage.set_up("test", "123", "123");
         
         //Main window loop
         //Displays the main menu
         do{
-            System.out.printf("%s\n%50s\n%s\n%s%28s\n%50s\n%54s\n%32s\n%46s\n%s","--------------------------------------------------------------","Welcome to THE sports timing platform","--------------------------------------------------------------"
-            , "Please make a selection:", "1) Login for administrators", "2) Go to the leaderboards", "3) Search and athlete by name", "4) Exit","5) Admin Registration", "Selection: ");
+            System.out.printf("%s\n%50s\n%s\n%s%28s\n%46s\n%50s\n%54s\n%48s\n%46s\n%32s\n%s","--------------------------------------------------------------","Welcome to THE sports timing platform","--------------------------------------------------------------"
+            , "Please make a selection:", "1) Login for administrators","2) login for athletes", "3) Go to the leaderboards", "4) Search and athlete by name", "5) Athlete Registration","6) Admin Registration","7) Exit", "Selection: ");
             selection = user_input.nextInt();
             user_input.nextLine();
             //Main switch statement
@@ -42,40 +49,88 @@ public class DriverClass {
                     username = user_input.nextLine();
                     System.out.println("Enter your Password: ");
                     password = user_input.nextLine();
-                    Administrator new_admin = new Administrator(username,password);
-                    if(admins.contains(new_admin)){
-                        System.out.println("IM THE BEST");
+                    //Calling UserStorage
+                    if(admin_storage.login(username, password)){
+                        System.out.println("Loging in is working!");
+                        is_finished = true;
+                        break;
+                    }
+                    else{
+                        System.out.println("Something broke or wrong password");
+                        break;
                     }
                     
                     //temp end
-                    is_finished = true;
-                    break;
+//                    is_finished = true;
+//                    break;
                 case 2:
                     System.out.println("--------------------------------------------------------------");
-                    System.out.printf("%s%15s\n%50s\n%50s\n%50s\n","Choose from the following sports:","1) idk man","2) idk man 2", "3) idk man 3", "4) idk man 4", "5) idk man 5");
+                    System.out.println("Enter your Username: ");
+                    username = user_input.nextLine();
+                    System.out.println("Enter your Password: ");
+                    password = user_input.nextLine();
+                    //Calling UserStorage
+                    if(user_storage.login(username, password)){
+                        System.out.println("Loging in is working!");
+                    }
+                    else{
+                        System.out.println("Something broke or wrong password");
+                        break;
+                    } 
                     //temp end
                     is_finished = true;
                     break;
                 case 3:
                     System.out.println("--------------------------------------------------------------");
+                    System.out.printf("%s%15s\n%50s\n%50s\n%50s\n","Choose from the following sports:","1) idk man","2) idk man 2", "3) idk man 3", "4) idk man 4", "5) idk man 5");
+                    //temp end
+                    is_finished = true;
+                    break;
+                case 4:
+                    System.out.println("--------------------------------------------------------------");
                     System.out.print("Enter the athletes last name: ");
                     athlete_name = user_input.nextLine();
                     is_finished = true;
                     break;
-                case 4:
-                    is_finished = true;
-                    break;
+                            
                 case 5:
-                    String username_create;
-                    String password_create;
-                    System.out.println("Enter you username");
-                    username_create = user_input.nextLine();
-                    System.out.println("Enter you password");
-                    password_create = user_input.nextLine();
+                    String athlete_user_create;
+                    String athlete_pass_create;
+                    String user_secret_code;
+                    System.out.println("Enter you username: ");
+                    athlete_user_create = user_input.nextLine();
+                    System.out.println("Enter you password: ");
+                    athlete_pass_create = user_input.nextLine();
+                    System.out.println("Enter the secret code provided to you: ");
+                    user_secret_code = user_input.nextLine();
                     //Creating the admin
-                    Administrator new_admin = new Administrator(username_create, password_create);
-                    admins.add(new_admin);
-                    
+                    if(user_storage.set_up(athlete_user_create, athlete_pass_create, user_secret_code)){
+                        System.out.println("User Succesfully created");
+                    }
+                    else{
+                        break;
+                    }
+                    break;
+                case 6:
+                    String admin_user_create;
+                    String admin_pass_create;
+                    String admin_secret_code;
+                    System.out.println("Enter you username: ");
+                    admin_user_create = user_input.nextLine();
+                    System.out.println("Enter you password: ");
+                    admin_pass_create = user_input.nextLine();
+                    System.out.println("Enter the secret code provided to you: ");
+                    admin_secret_code = user_input.nextLine();
+                    //Creating the admin
+                    if(admin_storage.set_up(admin_user_create, admin_pass_create, admin_secret_code)){
+                        System.out.println("Admin Succesfully created");
+                    }
+                    else{
+                        break;
+                    }
+                    break;
+                case 7:
+                    is_finished = true;
                     break;
                 default:
                     System.out.println("No selection was made, please select one of the 4 options");
