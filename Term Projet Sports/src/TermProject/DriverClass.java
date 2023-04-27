@@ -94,17 +94,20 @@ public class DriverClass {
                     break;
                             
                 case 5:
-                    String athlete_user_create;
-                    String athlete_pass_create;
-                    String user_secret_code;
+                    String athlete_user_create;String athlete_pass_create;
+                    String user_secret_code; String first_name; String last_name;
                     System.out.println("Enter you username: ");
                     athlete_user_create = user_input.nextLine();
                     System.out.println("Enter you password: ");
                     athlete_pass_create = user_input.nextLine();
                     System.out.println("Enter the secret code provided to you: ");
                     user_secret_code = user_input.nextLine();
+                    System.out.println("Enter you first name: ");
+                    first_name = user_input.nextLine();
+                    System.out.println("Enter your last name: ");
+                    last_name = user_input.nextLine();
                     //Creating the admin
-                    if(user_storage.set_up(athlete_user_create, athlete_pass_create, user_secret_code)){
+                    if(user_storage.set_up(athlete_user_create, athlete_pass_create, user_secret_code, first_name, last_name)){
                         System.out.println("User Succesfully created");
                     }
                     else{
