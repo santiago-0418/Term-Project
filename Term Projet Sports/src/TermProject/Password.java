@@ -115,12 +115,18 @@ class UserStorage{
             if(user_storage.get(user).equals(pass)){
                 System.out.println("Correct Password");
                 for(Athletes athlete: athletes){
-                    if(athlete.getUsername().equals(user));
-//                    athlete.athlete_menu();
-                    System.out.println(athlete);
-//                    for(int i=0; i<athletes.size();i++){
-//                        System.out.println(athletes.get(i).sport);
-//                    }
+                    if(athlete.getUsername().equals(user) && athlete.getClass()==Swimming.class);
+                    {
+                        System.out.println("Hello " + athlete.firstName + " "+ athlete.lastName + " you are a " + ((Swimming)athlete).sport + " athlete");
+                    }
+                    if(athlete.getUsername().equals(user) && athlete.getClass()==Football.class);
+                    {
+                        System.out.println("Hello " + athlete.firstName + " "+ athlete.lastName + " you are a " + ((Football)athlete).sport + " athlete");
+                    }
+                    if(athlete.getUsername().equals(user) && athlete.getClass()==Track.class);
+                    {
+                        System.out.println("Hello " + athlete.firstName + " "+ athlete.lastName + " you are a " + ((Track)athlete).sport + " athlete");
+                    }
                     break;
                 }
                 return true;

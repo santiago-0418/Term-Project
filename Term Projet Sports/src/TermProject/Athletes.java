@@ -63,6 +63,7 @@ class Football extends Athletes {
         this.userName = userName;
         this.firstName = firstName;
         this.lastName = LastName;
+        this.sport = "Football";
     }
 
     public void athlete_menu() {
@@ -120,6 +121,7 @@ class Swimming extends Athletes {
         this.userName = userName;
         this.firstName = firstName;
         this.lastName = LastName;
+        this.sport = "Swimming";
     }
 
     public void athlete_menu() {
@@ -179,6 +181,7 @@ class Track extends Athletes {
         this.userName = userName;
         this.firstName = firstName;
         this.lastName = LastName;
+        this.sport = "Track";
     }
 
     public void athlete_menu() {
