@@ -66,8 +66,8 @@ class UserStorage{
     Scanner user_input = new Scanner(System.in);
     //IDEA: have a secret code that lets people become admin
     private String secret_code = "321";
-    //Initilalizing list of Athletes
-    List<Athletes> athletes = new ArrayList();
+    //Initilalizing list of Athletes !!THIS IS THE THING CAUSING ALL OF THE PROBLEMS IM TOO TIRED TO FIGURE OUT A SOLUTION!!
+    public List<Athletes> athletes = new ArrayList();
     //Initializing the HashMap
     private HashMap<String, String> user_storage = new HashMap<>();
     
@@ -117,7 +117,7 @@ class UserStorage{
                 for(Athletes athlete: athletes){
                     if(athlete.getUsername().equals(user));
 //                    athlete.athlete_menu();
-                    System.out.println(athlete.sport);
+                    System.out.println(athlete);
 //                    for(int i=0; i<athletes.size();i++){
 //                        System.out.println(athletes.get(i).sport);
 //                    }
