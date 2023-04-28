@@ -1,11 +1,11 @@
 # Term-Project
 
-*Administrator Class*
+* Administrator Class
 
 
 
-*Athlete Class*
+* Athlete Class
 
 
 
-*Password(Storage) Class*
+* Password(Storage) Class
