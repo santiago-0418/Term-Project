@@ -34,6 +34,16 @@ abstract class Athletes {
         return userName;
     }
 
+    public String getSport() {
+        return sport;
+    }
+
+    public void setSport(String sport) {
+        this.sport = sport;
+    }
+    
+    
+
 //    public void athlete_menu(){
 //        System.out.println("\n----------------------------------");
 //        System.out.println("Helo " + this.userName + " You are now in the athlete menu for " + this.getSport() + " athletes.");
