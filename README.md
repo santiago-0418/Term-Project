@@ -9,11 +9,11 @@
 
 * Password(Storage) Class
 
--> Creates a HashMap where Admin usernames and passwords are stored
--> Creates a list of Administrators
+ Creates a HashMap where Admin usernames and passwords are stored
+ Creates a list of Administrators
 ----------------------------------------------------------------------
--> Creates a HashMap where Athletes usernames and passwords are stored
--> Creates a list of Athletes
+ Creates a HashMap where Athletes usernames and passwords are stored
+ Creates a list of Athletes
 
 Methods: 
 
