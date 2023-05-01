@@ -68,7 +68,7 @@ class Football extends Athletes {
         this.T_Test = T_Test;
         this.L_Test = L_Test;
     }
-
+    
     public Football(String userName, String firstName, String LastName) {
         this.userName = userName;
         this.firstName = firstName;
@@ -107,6 +107,10 @@ class Football extends Athletes {
 
     public void setL_Test(double L_Test) {
         this.L_Test = L_Test;
+    }
+    
+    public String getTimes(){
+        return String.format("%s: %f\n%s: %f\n%s: %f", "Forty Yard Dash:",this.fortyYardDash,"T Test",this.T_Test,"L Test",this.L_Test);
     }
     
 }
@@ -167,7 +171,9 @@ class Swimming extends Athletes {
         this.hundredButterfly = hundredButterfly;
     }
     
-    
+    public String getTimes(){
+        return String.format("%s: %f\n%s: %f\n%s: %f", "400m IM:",this.fourHundredIM,"100m Freestyle",this.hundredFree,"100m Butterfly",this.hundredButterfly);
+    }
 
 }
 
@@ -227,6 +233,8 @@ class Track extends Athletes {
         this.fourHundredMeters = fourHundredMeters;
     }
     
-    
+    public String getTimes(){
+        return String.format("%s: %f\n%s: %f\n%s: %f", "100m Sprint",this.hundredMeters,"200m Sprint",this.twoHundredMeters,"400m Sprint",this.fourHundredMeters);
+    }
 
 }
