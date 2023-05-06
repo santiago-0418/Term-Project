@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package TermProject;
+import java.io.IOException;
 import java .util.*;
 /**
  *
@@ -110,7 +111,7 @@ class UserStorage{
     
     //Verifying the password
 //    @Override
-    public boolean login(String user, String pass){
+    public boolean login(String user, String pass) throws IOException{
         if(user_storage.containsKey(user)){
             if(user_storage.get(user).equals(pass)){
                 System.out.println("Correct Password");
@@ -119,6 +120,8 @@ class UserStorage{
                     if(athlete.getUsername().equals(user) && athlete.getClass()==Swimming.class)
                     {
                         System.out.println("Hello " + athlete.firstName + " "+ athlete.lastName + " you are a " + ((Swimming)athlete).sport + " athlete");
+                        ((Swimming)athlete).UploadTimes();
+                        ((Swimming)athlete).setTimes();
                         System.out.println("Your times are:\n" + ((Swimming)athlete).getTimes());
                     }
                     else if(athlete.getUsername().equals(user) && athlete.getClass()==Football.class)

@@ -3,7 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
 package TermProject;
-
+import static TermProject.ReadWrite.*;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.*;
+import java.util.*;
 /**
  *
  * @author Zachary Tremblay
@@ -129,6 +135,7 @@ class Swimming extends Athletes {
         this.fourHundredIM = fourHundredIM;
         this.hundredFree = hundredFree;
         this.hundredButterfly = hundredButterfly;
+        CreateAthleteFolder(firstName);
     }
 
     public Swimming(String userName, String firstName, String LastName) {
@@ -136,6 +143,7 @@ class Swimming extends Athletes {
         this.firstName = firstName;
         this.lastName = LastName;
         this.sport = "Swimming";
+        CreateAthleteFolder(firstName);
     }
 
     public void athlete_menu() {
@@ -174,7 +182,30 @@ class Swimming extends Athletes {
     public String getTimes(){
         return String.format("%s: %f\n%s: %f\n%s: %f", "400m IM:",this.fourHundredIM,"100m Freestyle",this.hundredFree,"100m Butterfly",this.hundredButterfly);
     }
+    
+    public void UploadTimes() throws IOException{
+        ArrayList<String> time_list = new ArrayList<>(List.of("400mIM:"+this.fourHundredIM, "100mFree:"+this.hundredFree,"100mFly:"+this.hundredButterfly));
+        WriteToAthlete(this.firstName,this.sport,time_list);
+    }
 
+    
+    public void setTimes() throws FileNotFoundException{
+        GetAthleteTime(this.firstName,this.sport);
+        
+        String times = GetAthleteTime(this.firstName,this.sport);
+        System.out.println(times);
+        //Its pArSiNg time
+        ArrayList<String> temp_times = new ArrayList<>(Arrays.asList(times.split(",")));
+        temp_times.add("100Fly:35");
+//        System.out.println(temp_times.get(0));
+        for(String s: temp_times){
+            //Gives Category
+            System.out.println(s.substring(0, s.indexOf(":")));
+            //Gives time in seconds
+            System.out.println(s.substring(s.indexOf(":")+1));
+        }
+    }
+    
 }
 
 class Track extends Athletes {
@@ -238,3 +269,4 @@ class Track extends Athletes {
     }
 
 }
+
