@@ -203,6 +203,7 @@ class Swimming extends Athletes {
             System.out.println(s.substring(0, s.indexOf(":")));
             //Gives time in seconds
             System.out.println(s.substring(s.indexOf(":")+1));
+            
         }
     }
     

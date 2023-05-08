@@ -4,6 +4,7 @@
  */
 package TermProject;
 
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -15,7 +16,7 @@ public class DriverClass {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         //Initial Stuff
         Scanner user_input = new Scanner(System.in);
@@ -27,7 +28,9 @@ public class DriverClass {
 
         //Initialize Admin Password Storage (will later read from file or sql database)
         AdminStorage admin_storage = new AdminStorage();
+        admin_storage.init_admin_storage();
         UserStorage user_storage = new UserStorage();
+        user_storage.init_user_storage();
 
         //Creating List of administrators (will later read from file or sql database)
         //Temporary Admin added for testing purposes

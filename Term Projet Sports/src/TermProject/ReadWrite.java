@@ -65,4 +65,53 @@ public class ReadWrite {
 
     }
     
+    
+    public static String GetAdminLogIn() throws FileNotFoundException{
+        String home = System.getProperty("user.home");
+        String path = home+"/desktop/SportsTest/LoginInformation/Admins.txt";
+        BufferedReader br = new BufferedReader(new FileReader(path));
+        try {
+            StringBuilder sb = new StringBuilder();
+            String line = br.readLine();
+
+
+            while (line != null) {
+                sb.append(line);
+                sb.append(System.lineSeparator());
+                line = br.readLine();
+            }
+            String everything = sb.toString();
+            br.close();
+            return everything;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        
+    }
+    
+    public static String GetUserLogIn() throws FileNotFoundException{
+        String home = System.getProperty("user.home");
+        String path = home+"/desktop/SportsTest/LoginInformation/Users.txt";
+        BufferedReader br = new BufferedReader(new FileReader(path));
+        try {
+            StringBuilder sb = new StringBuilder();
+            String line = br.readLine();
+
+
+            while (line != null) {
+                sb.append(line);
+                sb.append(System.lineSeparator());
+                line = br.readLine();
+            }
+            String everything = sb.toString();
+            br.close();
+            return everything;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        
+    }
+    
+    
+    
 }

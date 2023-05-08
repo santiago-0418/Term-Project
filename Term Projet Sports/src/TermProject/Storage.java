@@ -5,6 +5,8 @@
 package TermProject;
 import java.io.IOException;
 import java .util.*;
+import static TermProject.ReadWrite.*;
+import java.io.FileNotFoundException;
 /**
  *
  * @author 2257853
@@ -16,14 +18,40 @@ import java .util.*;
 //    
 //}
 
-class AdminStorage{
+
+class AdminStorage {
        
     
     //IDEA: have a secret code that lets people become admin
     private String secret_code = "123";
     //Initializing the HashMap
-    private HashMap<String, String> admin_storage = new HashMap<>();
+    private static HashMap<String, String> admin_storage = new HashMap<>();
+    
     //Initializing the list of administrators (will later be read from a file)
+    public static void init_admin_storage() throws FileNotFoundException{
+        admin_storage = RestoreAdmins();
+        System.out.println(admin_storage);
+    }
+    
+    public static HashMap RestoreAdmins() throws FileNotFoundException{
+        HashMap<String, String> hs = new HashMap<>();
+        String temp = GetAdminLogIn();
+        //Parse text
+        ArrayList<String> temp_storage = new ArrayList<>(Arrays.asList(temp.substring(0,temp.lastIndexOf(',')).split(",")));
+        //System.out.println(temp_storage);
+        for(String s: temp_storage){
+            //System.out.println(s.substring(0, s.indexOf(":")));
+            String key = s.substring(0, s.indexOf(":"));
+            String value = s.substring(s.indexOf(":")+1);
+            hs.put(key,value);
+            //System.out.println("key "+key + " value "+value);
+        }
+        //System.out.println(hs);
+        
+        return hs;
+    }
+    
+    
     List<Administrator> admins = new ArrayList();
     //Setting a new username and password
     public boolean set_up(String user, String pass, String secret_access){
@@ -70,7 +98,32 @@ class UserStorage{
     //Initilalizing list of Athletes !!THIS IS THE THING CAUSING ALL OF THE PROBLEMS IM TOO TIRED TO FIGURE OUT A SOLUTION!!
     public List<Athletes> athletes = new ArrayList();
     //Initializing the HashMap
-    private HashMap<String, String> user_storage = new HashMap<>();
+    static private HashMap<String, String> user_storage = new HashMap<>();
+    
+    public static void init_user_storage() throws FileNotFoundException{
+        user_storage = RestoreUsers();
+        System.out.println(user_storage);
+    }
+    
+    public static HashMap RestoreUsers() throws FileNotFoundException{
+        HashMap<String, String> hs = new HashMap<>();
+        String temp = GetUserLogIn();
+        //Parse text
+        ArrayList<String> temp_storage = new ArrayList<>(Arrays.asList(temp.substring(0,temp.lastIndexOf(',')).split(",")));
+        //System.out.println(temp_storage);
+        for(String s: temp_storage){
+            //System.out.println(s.substring(0, s.indexOf(":")));
+            String key = s.substring(0, s.indexOf(":"));
+            String value = s.substring(s.indexOf(":")+1);
+            hs.put(key,value);
+            //System.out.println("key "+key + " value "+value);
+        }
+        //System.out.println(hs);
+        
+        return hs;
+    }
+    
+    
     
     //Setting a new username and password
     public boolean set_up(String user, String pass, String secret_access, String first_name, String last_name){
