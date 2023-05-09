@@ -4,8 +4,12 @@
  */
 package TermProject;
 
+import static TermProject.SetUp.first_time;
 import java.io.IOException;
 import java.util.*;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 /**
  *
@@ -25,6 +29,13 @@ public class DriverClass {
         String username;
         String password;
         String athlete_name;
+        
+        //Verifying if folder exists or if first time usage
+        String home = System.getProperty("user.home");
+        Path path = Path.of(home + "/desktop/SportsPlatform");
+        if (Files.exists(path)!=true) {
+            first_time();
+        }
 
         //Initialize Admin Password Storage (will later read from file or sql database)
         AdminStorage admin_storage = new AdminStorage();

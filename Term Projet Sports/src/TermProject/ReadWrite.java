@@ -12,6 +12,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.*;
 
 /**
  *
@@ -20,7 +21,8 @@ import java.util.ArrayList;
 public class ReadWrite {
     
     public static String GetAthleteTime(String name, String sport) throws FileNotFoundException {
-        String f_name = String.format("%s%s%s","/Users/santiago/desktop/SportsTest/Athletes/",name,"/"+sport);
+        String home = System.getProperty("user.home");
+        String f_name = String.format("%s%s%s%s",home,"/desktop/SportsPlatform/Athletes/",name,"/"+sport);
         BufferedReader br = new BufferedReader(new FileReader(f_name));
         try {
             StringBuilder sb = new StringBuilder();
@@ -41,7 +43,8 @@ public class ReadWrite {
     }
 
     public static void WriteToAthlete(String name,String sport, ArrayList<String> ls) throws IOException {
-        String f_name = String.format("%s%s%s","/Users/santiago/desktop/SportsTest/Athletes/",name,"/"+sport);
+        String home = System.getProperty("user.home");
+        String f_name = String.format("%s%s%s%s",home,"/desktop/SportsPlatform/Athletes/",name,"/"+sport);
         BufferedWriter writer = new BufferedWriter(new FileWriter(f_name, false));
 
         for(String s: ls){
@@ -59,8 +62,8 @@ public class ReadWrite {
     }
 
     public static void CreateAthleteFolder(String name){
-
-        String f_name = String.format("%s%s","/Users/santiago/desktop/SportsTest/Athletes/",name);
+        String home = System.getProperty("user.home");
+        String f_name = String.format("%s%s%s",home,"/desktop/SportsPlatform/Athletes/",name);
         new File(f_name).mkdirs();
 
     }
@@ -68,7 +71,7 @@ public class ReadWrite {
     
     public static String GetAdminLogIn() throws FileNotFoundException{
         String home = System.getProperty("user.home");
-        String path = home+"/desktop/SportsTest/LoginInformation/Admins.txt";
+        String path = home+"/desktop/SportsPlatform/LoginInformation/Admins.txt";
         BufferedReader br = new BufferedReader(new FileReader(path));
         try {
             StringBuilder sb = new StringBuilder();
@@ -91,7 +94,7 @@ public class ReadWrite {
     
     public static String GetUserLogIn() throws FileNotFoundException{
         String home = System.getProperty("user.home");
-        String path = home+"/desktop/SportsTest/LoginInformation/Users.txt";
+        String path = home+"/desktop/SportsPlatform/LoginInformation/Users.txt";
         BufferedReader br = new BufferedReader(new FileReader(path));
         try {
             StringBuilder sb = new StringBuilder();
@@ -112,6 +115,51 @@ public class ReadWrite {
         
     }
     
+    public static void SaveUsers(HashMap<String,String> ls, List<Athletes> athletes) throws IOException{
+        
+        String home = System.getProperty("user.home");
+        String path = home+"/desktop/SportsPlatform/LoginInformation/Users.txt";
+        BufferedWriter writer = new BufferedWriter(new FileWriter(path, false));
+        String toWrite = "";
+        ArrayList<String> temp_ls = new ArrayList<>(ls.keySet());
+        for(int i=0; i<ls.size();i++){
+            toWrite+= temp_ls.get(i)+":";
+            toWrite+= ls.get(temp_ls.get(i))+":";
+            for(Athletes athlete: athletes){
+                    
+                    if(athlete.getUsername().equals(temp_ls.get(i)) && athlete.getClass()==Swimming.class)
+                    {
+                        toWrite+=athlete.sport+":"+athlete.firstName+":"+athlete.lastName+",";
+                    }
+                    else if(athlete.getUsername().equals(temp_ls.get(i)) && athlete.getClass()==Football.class)
+                    {
+                        toWrite+=athlete.sport+":"+athlete.firstName+":"+athlete.lastName+",";                
+                    }
+                    else if(athlete.getUsername().equals(temp_ls.get(i)) && athlete.getClass()==Track.class)
+                    {
+                        toWrite+=athlete.sport+":"+athlete.firstName+":"+athlete.lastName+",";
+                    }
+                }
+        }
+        writer.write(toWrite);
+        //writer.append(section+":"+time);
+        writer.close();
+        
+    }
     
+    public static void SaveAdmins(HashMap<String,String> hs) throws IOException{
+        
+        String home = System.getProperty("user.home");
+        String path = home+"/desktop/SportsPlatform/LoginInformation/Admins.txt";
+        BufferedWriter writer = new BufferedWriter(new FileWriter(path, false));
+        String toWrite = "";
+        ArrayList<String> temp_ls = new ArrayList<>(hs.keySet());
+        for(int i=0; i<temp_ls.size();i++){
+            toWrite+=temp_ls.get(i)+":"+hs.get(temp_ls.get(i))+",";
+        }
+        writer.write(toWrite);
+        writer.close();
+        
+    }
     
 }

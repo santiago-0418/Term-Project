@@ -26,6 +26,7 @@ class AdminStorage {
     private String secret_code = "123";
     //Initializing the HashMap
     private static HashMap<String, String> admin_storage = new HashMap<>();
+    List<Administrator> admins = new ArrayList();
     
     //Initializing the list of administrators (will later be read from a file)
     public static void init_admin_storage() throws FileNotFoundException{
@@ -52,12 +53,13 @@ class AdminStorage {
     }
     
     
-    List<Administrator> admins = new ArrayList();
+    
     //Setting a new username and password
-    public boolean set_up(String user, String pass, String secret_access){
+    public boolean set_up(String user, String pass, String secret_access) throws IOException{
         if(secret_code.equals(secret_access)){
             admin_storage.put(user, pass);
             admins.add(new Administrator(user,pass));
+            SaveAdmins(admin_storage);
             return true;
         }
         else{
@@ -98,27 +100,47 @@ class UserStorage{
     //Initilalizing list of Athletes !!THIS IS THE THING CAUSING ALL OF THE PROBLEMS IM TOO TIRED TO FIGURE OUT A SOLUTION!!
     public List<Athletes> athletes = new ArrayList();
     //Initializing the HashMap
-    static private HashMap<String, String> user_storage = new HashMap<>();
+    private HashMap<String, String> user_storage = new HashMap<>();
     
-    public static void init_user_storage() throws FileNotFoundException{
+    public void init_user_storage() throws FileNotFoundException{
         user_storage = RestoreUsers();
         System.out.println(user_storage);
     }
     
-    public static HashMap RestoreUsers() throws FileNotFoundException{
+    public  HashMap RestoreUsers() throws FileNotFoundException{
         HashMap<String, String> hs = new HashMap<>();
         String temp = GetUserLogIn();
         //Parse text
         ArrayList<String> temp_storage = new ArrayList<>(Arrays.asList(temp.substring(0,temp.lastIndexOf(',')).split(",")));
         //System.out.println(temp_storage);
         for(String s: temp_storage){
+            ArrayList<String> temp_ls = new ArrayList<>(Arrays.asList(s.split(":")));
+            System.out.println(temp_ls);
             //System.out.println(s.substring(0, s.indexOf(":")));
-            String key = s.substring(0, s.indexOf(":"));
-            String value = s.substring(s.indexOf(":")+1);
+            String key = temp_ls.get(0);
+            String value = temp_ls.get(1);
+            String sport = temp_ls.get(2);
+            String f_name = temp_ls.get(3);
+            String l_name = temp_ls.get(4);
             hs.put(key,value);
-            //System.out.println("key "+key + " value "+value);
+            
+            switch(sport){                
+                    case "Football":
+                        athletes.add(new Football(key,f_name, l_name));
+                        break;
+                    case "Swimming":
+                        athletes.add(new Swimming(key,f_name, l_name));
+                        break;
+                    case "Track":
+                        athletes.add(new Track(key,f_name, l_name));
+                        break;
+                    default:
+                        System.out.println("Something Broke");
+                        break;
+                }
+            System.out.println("key "+key + " value "+value +" sport "+sport);
         }
-        //System.out.println(hs);
+        System.out.println(hs);
         
         return hs;
     }
@@ -126,7 +148,7 @@ class UserStorage{
     
     
     //Setting a new username and password
-    public boolean set_up(String user, String pass, String secret_access, String first_name, String last_name){
+    public boolean set_up(String user, String pass, String secret_access, String first_name, String last_name) throws IOException{
         if(secret_code.equals(secret_access)){
             user_storage.put(user, pass);
             boolean selected_sport = false;
@@ -153,6 +175,8 @@ class UserStorage{
                         System.out.println("Non valid input, please enter a number from 1 to 3 ");
                         break;
                 }
+                //Saves Users information to text file
+                SaveUsers(user_storage, athletes);
             }while(selected_sport!=true);
             return true;
         }
