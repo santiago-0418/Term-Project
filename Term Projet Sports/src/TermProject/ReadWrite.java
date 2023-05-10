@@ -155,11 +155,11 @@ public class ReadWrite {
                     }
                     else if(athlete.getUsername().equals(temp_ls.get(i)) && athlete.getClass()==Football.class)
                     {
-                        toWrite+=athlete.sport+":"+athlete.firstName+":"+athlete.lastName+",";                
+                        toWrite+=athlete.sport+":"+athlete.firstName+":"+athlete.lastName+":"+athlete.verified+",";                
                     }
                     else if(athlete.getUsername().equals(temp_ls.get(i)) && athlete.getClass()==Track.class)
                     {
-                        toWrite+=athlete.sport+":"+athlete.firstName+":"+athlete.lastName+",";
+                        toWrite+=athlete.sport+":"+athlete.firstName+":"+athlete.lastName+":"+athlete.verified+",";
                     }
                 }
         }

@@ -66,6 +66,7 @@ class Football extends Athletes {
     double fortyYardDash;
     double T_Test;
     double L_Test;
+    String verified = "true";
 
     public Football(String userName, String firstName, String lastName, double fortyYardDash, double T_Test, double L_Test) {
         this.firstName = firstName;
@@ -74,13 +75,16 @@ class Football extends Athletes {
         this.fortyYardDash = fortyYardDash;
         this.T_Test = T_Test;
         this.L_Test = L_Test;
+        CreateAthleteFolder(firstName);
     }
     
-    public Football(String userName, String firstName, String LastName) {
+    public Football(String userName, String firstName, String LastName, String verified) {
         this.userName = userName;
         this.firstName = firstName;
         this.lastName = LastName;
         this.sport = "Football";
+        this.verified = verified;
+        CreateAthleteFolder(firstName);
     }
 
     public void athlete_menu() {
@@ -304,6 +308,7 @@ class Track extends Athletes {
     double hundredMeters;
     double twoHundredMeters;
     double fourHundredMeters;
+    String verified;
 
     public Track(String userName, String firstName, String lastName, double hundredMeters, double twoHundredMeters, double fourHundredMeters) {
         this.userName = userName;
@@ -313,13 +318,16 @@ class Track extends Athletes {
         this.hundredMeters = hundredMeters;
         this.twoHundredMeters = twoHundredMeters;
         this.fourHundredMeters = fourHundredMeters;
+        CreateAthleteFolder(firstName);
     }
 
-    public Track(String userName, String firstName, String LastName) {
+    public Track(String userName, String firstName, String LastName, String verified) {
         this.userName = userName;
         this.firstName = firstName;
         this.lastName = LastName;
         this.sport = "Track";
+        this.verified = verified;
+        CreateAthleteFolder(firstName);
     }
 
     public void athlete_menu() {

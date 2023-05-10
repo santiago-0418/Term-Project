@@ -129,13 +129,13 @@ class UserStorage{
             
             switch(sport){                
                     case "Football":
-                        athletes.add(new Football(key,f_name, l_name));
+                        athletes.add(new Football(key,f_name, l_name, verified));
                         break;
                     case "Swimming":
                         athletes.add(new Swimming(key,f_name, l_name, verified));
                         break;
                     case "Track":
-                        athletes.add(new Track(key,f_name, l_name));
+                        athletes.add(new Track(key,f_name, l_name, verified));
                         break;
                     default:
                         System.out.println("Something Broke");
@@ -163,7 +163,7 @@ class UserStorage{
                 sport_selection = user_input.nextInt();
                 switch(sport_selection){                
                     case 1:
-                        athletes.add(new Football(user,first_name, last_name));
+                        athletes.add(new Football(user,first_name, last_name, "false"));
                         selected_sport = true;
                         break;
                     case 2:
@@ -171,7 +171,7 @@ class UserStorage{
                         selected_sport = true;
                         break;
                     case 3:
-                        athletes.add(new Track(user,first_name, last_name));
+                        athletes.add(new Track(user,first_name, last_name, "false"));
                         selected_sport = true;
                         break;
                     default:
@@ -202,7 +202,7 @@ class UserStorage{
                         System.out.println("--------------------------------------------------------------"
                                 + "\n--------------------------------------------------------------");
                         System.out.println("Hello " + athlete.firstName + " "+ athlete.lastName + " you are a " + ((Swimming)athlete).sport + " athlete");
-//                        ((Swimming)athlete).UploadTimes();
+                        ((Swimming)athlete).UploadTimes();
                         ((Swimming)athlete).setTimes();
                         System.out.println("Your times are:\n" + ((Swimming)athlete).getTimes());
                         System.out.println("Verified: "+((Swimming)athlete).verified);
@@ -214,7 +214,10 @@ class UserStorage{
                         System.out.println("--------------------------------------------------------------"
                                 + "\n--------------------------------------------------------------");
                         System.out.println("Hello " + athlete.firstName + " "+ athlete.lastName + " you are a " + ((Football)athlete).sport + " athlete");
+                        ((Football)athlete).UploadTimes();
+                        ((Football)athlete).setTimes();
                         System.out.println("Your times are:\n" + ((Football)athlete).getTimes());
+                        System.out.println("Verified: "+((Football)athlete).verified);
                         ((Football)athlete).ModifyTimes();
                     
                     }
@@ -223,7 +226,10 @@ class UserStorage{
                         System.out.println("--------------------------------------------------------------"
                                 + "\n--------------------------------------------------------------");
                         System.out.println("Hello " + athlete.firstName + " "+ athlete.lastName + " you are a " + ((Track)athlete).sport + " athlete");
+                        ((Track)athlete).UploadTimes();
+                        ((Track)athlete).setTimes();
                         System.out.println("Your times are:\n" + ((Track)athlete).getTimes());
+                        System.out.println("Verified: "+((Track)athlete).verified);
                         ((Track)athlete).ModifyTimes();
                     }
                 }
