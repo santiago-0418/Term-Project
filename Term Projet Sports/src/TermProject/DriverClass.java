@@ -10,6 +10,7 @@ import java.util.*;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import TermProject.UserStorage.*;
 
 /**
  *
@@ -113,6 +114,7 @@ public class DriverClass {
                     System.out.println("--------------------------------------------------------------");
                     System.out.print("Enter the athletes last name: ");
                     athlete_name = user_input.nextLine();
+                    user_storage.Search(athlete_name);
                     is_finished = true;
                     break;
 
