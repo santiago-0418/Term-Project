@@ -6,6 +6,7 @@ package TermProject;
 import java.io.IOException;
 import java .util.*;
 import static TermProject.ReadWrite.*;
+import static TermProject.Athletes.*;
 import java.io.FileNotFoundException;
 /**
  *
@@ -191,26 +192,36 @@ class UserStorage{
     public boolean login(String user, String pass) throws IOException{
         if(user_storage.containsKey(user)){
             if(user_storage.get(user).equals(pass)){
-                System.out.println("Correct Password");
+                //System.out.println("Correct Password");
                 for(Athletes athlete: athletes){
                     
                     if(athlete.getUsername().equals(user) && athlete.getClass()==Swimming.class)
                     {
+                        System.out.println("--------------------------------------------------------------"
+                                + "\n--------------------------------------------------------------");
                         System.out.println("Hello " + athlete.firstName + " "+ athlete.lastName + " you are a " + ((Swimming)athlete).sport + " athlete");
-                        ((Swimming)athlete).UploadTimes();
+//                        ((Swimming)athlete).UploadTimes();
                         ((Swimming)athlete).setTimes();
                         System.out.println("Your times are:\n" + ((Swimming)athlete).getTimes());
+                        ((Swimming)athlete).ModifyTimes();
+                        
                     }
                     else if(athlete.getUsername().equals(user) && athlete.getClass()==Football.class)
                     {
+                        System.out.println("--------------------------------------------------------------"
+                                + "\n--------------------------------------------------------------");
                         System.out.println("Hello " + athlete.firstName + " "+ athlete.lastName + " you are a " + ((Football)athlete).sport + " athlete");
                         System.out.println("Your times are:\n" + ((Football)athlete).getTimes());
+                        ((Football)athlete).ModifyTimes();
                     
                     }
                     else if(athlete.getUsername().equals(user) && athlete.getClass()==Track.class)
                     {
+                        System.out.println("--------------------------------------------------------------"
+                                + "\n--------------------------------------------------------------");
                         System.out.println("Hello " + athlete.firstName + " "+ athlete.lastName + " you are a " + ((Track)athlete).sport + " athlete");
                         System.out.println("Your times are:\n" + ((Track)athlete).getTimes());
+                        ((Track)athlete).ModifyTimes();
                     }
                 }
                 return true;
