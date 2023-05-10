@@ -20,6 +20,7 @@ abstract class Athletes {
     String firstName;
     String lastName;
     String sport = "test";
+    String verified = "false";
 
     public static void main(String[] args) {
         Football Zach = new Football("kaze", "Zach", "Tremblay", 4.78, 4.30, 7.33);
@@ -181,6 +182,7 @@ class Swimming extends Athletes {
     double fourHundredIM;
     double hundredFree;
     double hundredButterfly;
+    String verified = "true";
 
     public Swimming(String userName, String firstName, String lastName, double fourHundredIM, double hundredFree, double hundredButterfly) {
         this.userName = userName;
@@ -193,11 +195,12 @@ class Swimming extends Athletes {
         CreateAthleteFolder(firstName);
     }
 
-    public Swimming(String userName, String firstName, String LastName) {
+    public Swimming(String userName, String firstName, String LastName, String verified) {
         this.userName = userName;
         this.firstName = firstName;
         this.lastName = LastName;
         this.sport = "Swimming";
+        this.verified = verified;
         CreateAthleteFolder(firstName);
     }
 

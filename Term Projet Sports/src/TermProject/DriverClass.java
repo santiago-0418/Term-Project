@@ -41,6 +41,7 @@ public class DriverClass {
         //Initialize Admin Password Storage (will later read from file or sql database)
         AdminStorage admin_storage = new AdminStorage();
         admin_storage.init_admin_storage();
+        System.out.println();
         UserStorage user_storage = new UserStorage();
         user_storage.init_user_storage();
 

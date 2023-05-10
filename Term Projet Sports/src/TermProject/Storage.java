@@ -30,12 +30,12 @@ class AdminStorage {
     List<Administrator> admins = new ArrayList();
     
     //Initializing the list of administrators (will later be read from a file)
-    public static void init_admin_storage() throws FileNotFoundException{
+    public void init_admin_storage() throws FileNotFoundException{
         admin_storage = RestoreAdmins();
         System.out.println(admin_storage);
     }
     
-    public static HashMap RestoreAdmins() throws FileNotFoundException{
+    public HashMap RestoreAdmins() throws FileNotFoundException{
         HashMap<String, String> hs = new HashMap<>();
         String temp = GetAdminLogIn();
         //Parse text
@@ -46,6 +46,7 @@ class AdminStorage {
             String key = s.substring(0, s.indexOf(":"));
             String value = s.substring(s.indexOf(":")+1);
             hs.put(key,value);
+            admins.add(new Administrator(key, value));
             //System.out.println("key "+key + " value "+value);
         }
         //System.out.println(hs);
@@ -70,13 +71,13 @@ class AdminStorage {
     }
     //Verifying the password
 //    @Override
-    public boolean login(String user, String pass){
+    public boolean login(String user, String pass) throws FileNotFoundException{
         if(admin_storage.containsKey(user)){
             if(admin_storage.get(user).equals(pass)){
                 System.out.println("Correct Password");
                 for(Administrator admin: admins){
                     if(admin.getUser_name().equals(user)){
-                        admin.admin_menu();
+                        
                         break;
                     }
                 }
@@ -123,6 +124,7 @@ class UserStorage{
             String sport = temp_ls.get(2);
             String f_name = temp_ls.get(3);
             String l_name = temp_ls.get(4);
+            String verified = temp_ls.get(5);
             hs.put(key,value);
             
             switch(sport){                
@@ -130,7 +132,7 @@ class UserStorage{
                         athletes.add(new Football(key,f_name, l_name));
                         break;
                     case "Swimming":
-                        athletes.add(new Swimming(key,f_name, l_name));
+                        athletes.add(new Swimming(key,f_name, l_name, verified));
                         break;
                     case "Track":
                         athletes.add(new Track(key,f_name, l_name));
@@ -165,7 +167,7 @@ class UserStorage{
                         selected_sport = true;
                         break;
                     case 2:
-                        athletes.add(new Swimming(user,first_name, last_name));
+                        athletes.add(new Swimming(user,first_name, last_name, "false"));
                         selected_sport = true;
                         break;
                     case 3:
@@ -203,6 +205,7 @@ class UserStorage{
 //                        ((Swimming)athlete).UploadTimes();
                         ((Swimming)athlete).setTimes();
                         System.out.println("Your times are:\n" + ((Swimming)athlete).getTimes());
+                        System.out.println("Verified: "+((Swimming)athlete).verified);
                         ((Swimming)athlete).ModifyTimes();
                         
                     }
