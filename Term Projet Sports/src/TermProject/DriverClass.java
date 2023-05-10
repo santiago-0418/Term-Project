@@ -93,7 +93,19 @@ public class DriverClass {
                     break;
                 case 3:
                     System.out.println("--------------------------------------------------------------");
-                    System.out.printf("%s%15s\n%50s\n%50s\n%50s\n", "Choose from the following sports:", "1) Football", "2) Smimming", "3) Track");
+                    System.out.printf("%s%15s\n%50s\n%50s\n%50s\n%s\n", "Choose from the following sports:", "1) Football", "2) Swimming", "3) Track", "Selection:");
+                    int choice1 = user_input.nextInt();
+                    switch(choice1){
+                        case 1: 
+                            System.out.printf("%s%15s\n%50s\n%50s\n%50s\n%s\n", "Which Test do you want to see", "1) 40 yard dash", "2) T-Test", "3) L-Test", "Selection:");
+                            int choice2 = user_input.nextInt();
+                            switch(choice2){
+                                case 1: 
+                                    
+                            }
+                            
+                            
+                    }
                     //temp end
                     is_finished = true;
                     break;
@@ -148,7 +160,7 @@ public class DriverClass {
                     is_finished = true;
                     break;
                 default:
-                    System.out.println("No selection was made, please select one of the 4 options");
+                    System.out.println("No selection was made, please select one of the 7 options");
             }
 
         } while (is_finished != true);
