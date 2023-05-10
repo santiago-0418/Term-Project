@@ -234,5 +234,23 @@ class UserStorage{
             return false;
         }
     }
+     
+    public void Search(String l_name) throws FileNotFoundException{
+        
+        for(Athletes athlete: athletes){
+            if(athlete.lastName.equals(l_name) && athlete.getClass()==Swimming.class){
+                ((Swimming)athlete).setTimes();
+                System.out.println(athlete.firstName+" "+athlete.lastName+" times are:\n" + ((Swimming)athlete).getTimes());
+            }
+            else if(athlete.lastName.equals(l_name) && athlete.getClass()==Football.class){
+                ((Swimming)athlete).setTimes();
+                System.out.println(athlete.firstName+" "+athlete.lastName+" times are:\n" + ((Football)athlete).getTimes());
+            }
+            else if(athlete.lastName.equals(l_name) && athlete.getClass()==Track.class){
+                ((Swimming)athlete).setTimes();
+                System.out.println(athlete.firstName+" "+athlete.lastName+" times are:\n" + ((Track)athlete).getTimes());
+            }
+        }
+    }
     
 }
