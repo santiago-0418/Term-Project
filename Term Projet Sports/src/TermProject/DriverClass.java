@@ -66,6 +66,55 @@ public class DriverClass {
                     password = user_input.nextLine();
                     //Calling UserStorage
                     if (admin_storage.login(username, password)) {
+                        
+                        System.out.print("Here are the Athletes to verify: ");
+                      
+                        List<Athletes> temp_list = user_storage.getAthletes();
+                        for(Athletes athlete: temp_list){
+                            if(athlete.getClass()==Swimming.class && ((Swimming)athlete).getVerification().equals("false")){
+                                System.out.println(((Swimming)athlete).getVerification());
+                                System.out.println(((Swimming)athlete).firstName);
+                                user_storage.Search(((Swimming)athlete).getLastName());
+                                System.out.println("Are these times accurate? Enter Y/N");
+                                if(user_input.nextLine().equals("Y")){
+                                  ((Swimming)athlete).setVerification("true");
+                                  System.out.println("WTF"+((Swimming)athlete).getVerification());
+                                }
+                                else{
+                                    //((Swimming)athlete).hundredButterfly=0;((Swimming)athlete).fourHundredIM=0;((Swimming)athlete).hundredFree=0;
+                                    ((Swimming)athlete).verified = "FALSE TIMES DETECTED BY "+username;
+                                }
+                            }
+                            else if(athlete.getClass()==Football.class && ((Football)athlete).getVerification().equals("false")){
+                                System.out.println(((Football)athlete).firstName);
+                                user_storage.Search(((Football)athlete).getLastName());
+                                System.out.println("Are these times accurate? Enter Y/N");
+                                if(user_input.nextLine().equals("Y")){
+                                  ((Football)athlete).setVerification("true");
+                                }
+                                else{
+                                    //((Swimming)athlete).hundredButterfly=0;((Swimming)athlete).fourHundredIM=0;((Swimming)athlete).hundredFree=0;
+                                    ((Football)athlete).verified = "FALSE TIMES DETECTED BY "+username;
+                                }
+                            }
+                            else if(athlete.getClass()==Track.class && ((Track)athlete).getVerification().equals("false")){
+                                System.out.println(((Track)athlete).firstName);
+                                user_storage.Search(((Track)athlete).getLastName());
+                                System.out.println("Are these times accurate? Enter Y/N");
+                                if(user_input.nextLine().equals("Y")){
+                                  ((Track)athlete).setVerification("true");
+                                }
+                                else{
+                                    //((Swimming)athlete).hundredButterfly=0;((Swimming)athlete).fourHundredIM=0;((Swimming)athlete).hundredFree=0;
+                                    ((Track)athlete).verified = "FALSE TIMES DETECTED BY "+username;
+                                }
+                            }
+                            else{
+                                System.out.println("No times to verify");
+                                break;
+                            }
+                        }
+                        
                         System.out.println("Loging in is working!");
                         is_finished = true;
                         break;

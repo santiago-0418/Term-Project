@@ -120,6 +120,14 @@ class Football extends Athletes {
         this.L_Test = L_Test;
     }
     
+    public void setVerification(String verification){
+        this.verified = verification;
+    }
+    
+    public String getVerification(){
+        return this.verified;
+    }
+    
     public String getTimes(){
         return String.format("%s: %f\n%s: %f\n%s: %f", "Forty Yard Dash",this.fortyYardDash,"T Test",this.T_Test,"L Test",this.L_Test);
     }
@@ -239,6 +247,14 @@ class Swimming extends Athletes {
 
     public void setHundredButterfly(double hundredButterfly) {
         this.hundredButterfly = hundredButterfly;
+    }
+    
+    public void setVerification(String verification){
+        this.verified = verification;
+    }
+    
+    public String getVerification(){
+        return this.verified;
     }
     
     public String getTimes(){
@@ -363,10 +379,17 @@ class Track extends Athletes {
         this.fourHundredMeters = fourHundredMeters;
     }
     
+    public void setVerification(String verification){
+        this.verified = verification;
+    }
+    
     public String getTimes(){
         return String.format("%s: %f\n%s: %f\n%s: %f", "100m Sprint",this.hundredMeters,"200m Sprint",this.twoHundredMeters,"400m Sprint",this.fourHundredMeters);
     }
     
+    public String getVerification(){
+        return this.verified;
+    }
     
     public void UploadTimes() throws IOException{
         ArrayList<String> time_list = new ArrayList<>(List.of("100mSprint:"+this.hundredMeters, "200mSprint:"+this.twoHundredMeters,"400mSprint:"+this.fourHundredMeters));

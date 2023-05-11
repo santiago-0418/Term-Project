@@ -104,6 +104,10 @@ class UserStorage{
     //Initializing the HashMap
     private HashMap<String, String> user_storage = new HashMap<>();
     
+    public List getAthletes(){
+        return athletes;
+    }
+    
     public void init_user_storage() throws FileNotFoundException{
         user_storage = RestoreUsers();
         System.out.println(user_storage);
@@ -165,14 +169,17 @@ class UserStorage{
                     case 1:
                         athletes.add(new Football(user,first_name, last_name, "false"));
                         selected_sport = true;
+                        initTxt();
                         break;
                     case 2:
                         athletes.add(new Swimming(user,first_name, last_name, "false"));
                         selected_sport = true;
+                        initTxt();
                         break;
                     case 3:
                         athletes.add(new Track(user,first_name, last_name, "false"));
                         selected_sport = true;
+                        initTxt();
                         break;
                     default:
                         System.out.println("Non valid input, please enter a number from 1 to 3 ");
@@ -202,8 +209,8 @@ class UserStorage{
                         System.out.println("--------------------------------------------------------------"
                                 + "\n--------------------------------------------------------------");
                         System.out.println("Hello " + athlete.firstName + " "+ athlete.lastName + " you are a " + ((Swimming)athlete).sport + " athlete");
-                        ((Swimming)athlete).UploadTimes();
-                        ((Swimming)athlete).setTimes();
+//                        ((Swimming)athlete).UploadTimes();
+//                        ((Swimming)athlete).setTimes();
                         System.out.println("Your times are:\n" + ((Swimming)athlete).getTimes());
                         System.out.println("Verified: "+((Swimming)athlete).verified);
                         ((Swimming)athlete).ModifyTimes();
@@ -214,8 +221,8 @@ class UserStorage{
                         System.out.println("--------------------------------------------------------------"
                                 + "\n--------------------------------------------------------------");
                         System.out.println("Hello " + athlete.firstName + " "+ athlete.lastName + " you are a " + ((Football)athlete).sport + " athlete");
-                        ((Football)athlete).UploadTimes();
-                        ((Football)athlete).setTimes();
+//                        ((Football)athlete).UploadTimes();
+//                        ((Football)athlete).setTimes();
                         System.out.println("Your times are:\n" + ((Football)athlete).getTimes());
                         System.out.println("Verified: "+((Football)athlete).verified);
                         ((Football)athlete).ModifyTimes();
@@ -226,8 +233,8 @@ class UserStorage{
                         System.out.println("--------------------------------------------------------------"
                                 + "\n--------------------------------------------------------------");
                         System.out.println("Hello " + athlete.firstName + " "+ athlete.lastName + " you are a " + ((Track)athlete).sport + " athlete");
-                        ((Track)athlete).UploadTimes();
-                        ((Track)athlete).setTimes();
+//                        ((Track)athlete).UploadTimes();
+//                        ((Track)athlete).setTimes();
                         System.out.println("Your times are:\n" + ((Track)athlete).getTimes());
                         System.out.println("Verified: "+((Track)athlete).verified);
                         ((Track)athlete).ModifyTimes();
@@ -243,7 +250,31 @@ class UserStorage{
             return false;
         }
     }
+    
+    public void initTxt() throws FileNotFoundException, IOException{
+        for(Athletes athlete: athletes){
+            if(athlete.getClass()==Swimming.class){
+                ((Swimming)athlete).UploadTimes();
+                ((Swimming)athlete).setTimes();
+            }
+            else if(athlete.getClass()==Football.class){
+                ((Football)athlete).UploadTimes();
+                ((Football)athlete).setTimes();
+            }
+            else if(athlete.getClass()==Track.class){
+                ((Track)athlete).UploadTimes();
+                ((Track)athlete).setTimes();
+            }
+        }
+    }
      
+    public void SaveChanges(List funnylist) throws IOException{
+        SaveUsers(user_storage, funnylist);
+        for(int i=0; i<funnylist.size();i++){
+            System.out.println(funnylist.get(i));
+        }
+    }
+    
     public void Search(String l_name) throws FileNotFoundException{
         
         for(Athletes athlete: athletes){
@@ -252,11 +283,11 @@ class UserStorage{
                 System.out.println(athlete.firstName+" "+athlete.lastName+" times are:\n" + ((Swimming)athlete).getTimes());
             }
             else if(athlete.lastName.equals(l_name) && athlete.getClass()==Football.class){
-                ((Swimming)athlete).setTimes();
+                ((Football)athlete).setTimes();
                 System.out.println(athlete.firstName+" "+athlete.lastName+" times are:\n" + ((Football)athlete).getTimes());
             }
             else if(athlete.lastName.equals(l_name) && athlete.getClass()==Track.class){
-                ((Swimming)athlete).setTimes();
+                ((Track)athlete).setTimes();
                 System.out.println(athlete.firstName+" "+athlete.lastName+" times are:\n" + ((Track)athlete).getTimes());
             }
         }
