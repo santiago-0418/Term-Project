@@ -181,12 +181,51 @@ public class DriverClass {
                             switch (choice2) {
                                 case 1:
                                     Leaderboards.PrintFootballForty(user_storage.athletes);
+                                    break;
                                 case 2:
                                     Leaderboards.PrintFootballT_Test(user_storage.athletes);
+                                    break;
                                 case 3:
-                                    
+                                    Leaderboards.PrintFootballL_Test(user_storage.athletes);
+                                    break;
+                            }
+                            is_finished = true;
+                            break;
+                        case 2:
+                            System.out.printf("%s%15s\n%50s\n%50s\n%50s\n%s\n", "Which Time do you want to see", "1) 400 IM", "2) 100 Free", "3) 100 Butterfly", "Selection:");
+                            int choice3 = user_input.nextInt();
+                            switch (choice3) {
+                                case 1:
+                                    Leaderboards.PrintSwimmingFourHundredIM(user_storage.athletes);
+                                    break;
+                                case 2:
+                                    Leaderboards.PrintSwimmingHundredFree(user_storage.athletes);
+                                    break;
+                                case 3:
+                                    Leaderboards.PrintSwimmingHundredButterfly(user_storage.athletes);
+                                    break;
+
                                     
                             }
+                            is_finished = true;
+                            break;
+                        case 3:
+                            System.out.printf("%s%15s\n%50s\n%50s\n%50s\n%s\n", "Which Time do you want to see", "1) 100 meters", "2) 200 meters", "3) 400 meters", "Selection:");
+                            int choice4 = user_input.nextInt();
+                            switch (choice4) {
+                                case 1:
+                                    Leaderboards.PrintTrack100(user_storage.athletes);
+                                    break;
+                                case 2:
+                                    Leaderboards.PrintTrack200(user_storage.athletes);
+                                    break;
+                                case 3:
+                                    Leaderboards.PrintTrack400(user_storage.athletes);
+                                    break;
+
+                            }
+                            is_finished = true;
+                            break;
 
                     }
                     //temp end
