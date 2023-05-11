@@ -30,12 +30,12 @@ class AdminStorage {
     List<Administrator> admins = new ArrayList();
     
     //Initializing the list of administrators (will later be read from a file)
-    public void init_admin_storage() throws FileNotFoundException{
+    public static void init_admin_storage() throws FileNotFoundException{
         admin_storage = RestoreAdmins();
         System.out.println(admin_storage);
     }
     
-    public HashMap RestoreAdmins() throws FileNotFoundException{
+    public static HashMap RestoreAdmins() throws FileNotFoundException{
         HashMap<String, String> hs = new HashMap<>();
         String temp = GetAdminLogIn();
         //Parse text
@@ -46,7 +46,6 @@ class AdminStorage {
             String key = s.substring(0, s.indexOf(":"));
             String value = s.substring(s.indexOf(":")+1);
             hs.put(key,value);
-            admins.add(new Administrator(key, value));
             //System.out.println("key "+key + " value "+value);
         }
         //System.out.println(hs);
@@ -71,13 +70,13 @@ class AdminStorage {
     }
     //Verifying the password
 //    @Override
-    public boolean login(String user, String pass) throws FileNotFoundException{
+    public boolean login(String user, String pass){
         if(admin_storage.containsKey(user)){
             if(admin_storage.get(user).equals(pass)){
                 System.out.println("Correct Password");
                 for(Administrator admin: admins){
                     if(admin.getUser_name().equals(user)){
-                        
+                        admin.admin_menu();
                         break;
                     }
                 }
@@ -104,10 +103,6 @@ class UserStorage{
     //Initializing the HashMap
     private HashMap<String, String> user_storage = new HashMap<>();
     
-    public List getAthletes(){
-        return athletes;
-    }
-    
     public void init_user_storage() throws FileNotFoundException{
         user_storage = RestoreUsers();
         System.out.println(user_storage);
@@ -128,18 +123,17 @@ class UserStorage{
             String sport = temp_ls.get(2);
             String f_name = temp_ls.get(3);
             String l_name = temp_ls.get(4);
-            String verified = temp_ls.get(5);
             hs.put(key,value);
             
             switch(sport){                
                     case "Football":
-                        athletes.add(new Football(key,f_name, l_name, verified));
+                        athletes.add(new Football(key,f_name, l_name));
                         break;
                     case "Swimming":
-                        athletes.add(new Swimming(key,f_name, l_name, verified));
+                        athletes.add(new Swimming(key,f_name, l_name));
                         break;
                     case "Track":
-                        athletes.add(new Track(key,f_name, l_name, verified));
+                        athletes.add(new Track(key,f_name, l_name));
                         break;
                     default:
                         System.out.println("Something Broke");
@@ -167,19 +161,16 @@ class UserStorage{
                 sport_selection = user_input.nextInt();
                 switch(sport_selection){                
                     case 1:
-                        athletes.add(new Football(user,first_name, last_name, "false"));
+                        athletes.add(new Football(user,first_name, last_name));
                         selected_sport = true;
-                        initTxt();
                         break;
                     case 2:
-                        athletes.add(new Swimming(user,first_name, last_name, "false"));
+                        athletes.add(new Swimming(user,first_name, last_name));
                         selected_sport = true;
-                        initTxt();
                         break;
                     case 3:
-                        athletes.add(new Track(user,first_name, last_name, "false"));
+                        athletes.add(new Track(user,first_name, last_name));
                         selected_sport = true;
-                        initTxt();
                         break;
                     default:
                         System.out.println("Non valid input, please enter a number from 1 to 3 ");
@@ -210,9 +201,8 @@ class UserStorage{
                                 + "\n--------------------------------------------------------------");
                         System.out.println("Hello " + athlete.firstName + " "+ athlete.lastName + " you are a " + ((Swimming)athlete).sport + " athlete");
 //                        ((Swimming)athlete).UploadTimes();
-//                        ((Swimming)athlete).setTimes();
+                        ((Swimming)athlete).setTimes();
                         System.out.println("Your times are:\n" + ((Swimming)athlete).getTimes());
-                        System.out.println("Verified: "+((Swimming)athlete).verified);
                         ((Swimming)athlete).ModifyTimes();
                         
                     }
@@ -221,10 +211,7 @@ class UserStorage{
                         System.out.println("--------------------------------------------------------------"
                                 + "\n--------------------------------------------------------------");
                         System.out.println("Hello " + athlete.firstName + " "+ athlete.lastName + " you are a " + ((Football)athlete).sport + " athlete");
-//                        ((Football)athlete).UploadTimes();
-//                        ((Football)athlete).setTimes();
                         System.out.println("Your times are:\n" + ((Football)athlete).getTimes());
-                        System.out.println("Verified: "+((Football)athlete).verified);
                         ((Football)athlete).ModifyTimes();
                     
                     }
@@ -233,10 +220,7 @@ class UserStorage{
                         System.out.println("--------------------------------------------------------------"
                                 + "\n--------------------------------------------------------------");
                         System.out.println("Hello " + athlete.firstName + " "+ athlete.lastName + " you are a " + ((Track)athlete).sport + " athlete");
-//                        ((Track)athlete).UploadTimes();
-//                        ((Track)athlete).setTimes();
                         System.out.println("Your times are:\n" + ((Track)athlete).getTimes());
-                        System.out.println("Verified: "+((Track)athlete).verified);
                         ((Track)athlete).ModifyTimes();
                     }
                 }
@@ -250,31 +234,7 @@ class UserStorage{
             return false;
         }
     }
-    
-    public void initTxt() throws FileNotFoundException, IOException{
-        for(Athletes athlete: athletes){
-            if(athlete.getClass()==Swimming.class){
-                ((Swimming)athlete).UploadTimes();
-                ((Swimming)athlete).setTimes();
-            }
-            else if(athlete.getClass()==Football.class){
-                ((Football)athlete).UploadTimes();
-                ((Football)athlete).setTimes();
-            }
-            else if(athlete.getClass()==Track.class){
-                ((Track)athlete).UploadTimes();
-                ((Track)athlete).setTimes();
-            }
-        }
-    }
      
-    public void SaveChanges(List funnylist) throws IOException{
-        SaveUsers(user_storage, funnylist);
-        for(int i=0; i<funnylist.size();i++){
-            System.out.println(funnylist.get(i));
-        }
-    }
-    
     public void Search(String l_name) throws FileNotFoundException{
         
         for(Athletes athlete: athletes){
@@ -283,11 +243,11 @@ class UserStorage{
                 System.out.println(athlete.firstName+" "+athlete.lastName+" times are:\n" + ((Swimming)athlete).getTimes());
             }
             else if(athlete.lastName.equals(l_name) && athlete.getClass()==Football.class){
-                ((Football)athlete).setTimes();
+                ((Swimming)athlete).setTimes();
                 System.out.println(athlete.firstName+" "+athlete.lastName+" times are:\n" + ((Football)athlete).getTimes());
             }
             else if(athlete.lastName.equals(l_name) && athlete.getClass()==Track.class){
-                ((Track)athlete).setTimes();
+                ((Swimming)athlete).setTimes();
                 System.out.println(athlete.firstName+" "+athlete.lastName+" times are:\n" + ((Track)athlete).getTimes());
             }
         }

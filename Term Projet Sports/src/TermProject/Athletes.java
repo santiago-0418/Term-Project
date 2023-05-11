@@ -20,7 +20,6 @@ abstract class Athletes {
     String firstName;
     String lastName;
     String sport = "test";
-    String verified = "false";
 
     public static void main(String[] args) {
         Football Zach = new Football("kaze", "Zach", "Tremblay", 4.78, 4.30, 7.33);
@@ -66,7 +65,6 @@ class Football extends Athletes {
     double fortyYardDash;
     double T_Test;
     double L_Test;
-    String verified = "true";
 
     public Football(String userName, String firstName, String lastName, double fortyYardDash, double T_Test, double L_Test) {
         this.firstName = firstName;
@@ -75,16 +73,13 @@ class Football extends Athletes {
         this.fortyYardDash = fortyYardDash;
         this.T_Test = T_Test;
         this.L_Test = L_Test;
-        CreateAthleteFolder(firstName);
     }
     
-    public Football(String userName, String firstName, String LastName, String verified) {
+    public Football(String userName, String firstName, String LastName) {
         this.userName = userName;
         this.firstName = firstName;
         this.lastName = LastName;
         this.sport = "Football";
-        this.verified = verified;
-        CreateAthleteFolder(firstName);
     }
 
     public void athlete_menu() {
@@ -118,14 +113,6 @@ class Football extends Athletes {
 
     public void setL_Test(double L_Test) {
         this.L_Test = L_Test;
-    }
-    
-    public void setVerification(String verification){
-        this.verified = verification;
-    }
-    
-    public String getVerification(){
-        return this.verified;
     }
     
     public String getTimes(){
@@ -194,7 +181,6 @@ class Swimming extends Athletes {
     double fourHundredIM;
     double hundredFree;
     double hundredButterfly;
-    String verified = "true";
 
     public Swimming(String userName, String firstName, String lastName, double fourHundredIM, double hundredFree, double hundredButterfly) {
         this.userName = userName;
@@ -207,12 +193,11 @@ class Swimming extends Athletes {
         CreateAthleteFolder(firstName);
     }
 
-    public Swimming(String userName, String firstName, String LastName, String verified) {
+    public Swimming(String userName, String firstName, String LastName) {
         this.userName = userName;
         this.firstName = firstName;
         this.lastName = LastName;
         this.sport = "Swimming";
-        this.verified = verified;
         CreateAthleteFolder(firstName);
     }
 
@@ -247,14 +232,6 @@ class Swimming extends Athletes {
 
     public void setHundredButterfly(double hundredButterfly) {
         this.hundredButterfly = hundredButterfly;
-    }
-    
-    public void setVerification(String verification){
-        this.verified = verification;
-    }
-    
-    public String getVerification(){
-        return this.verified;
     }
     
     public String getTimes(){
@@ -324,7 +301,6 @@ class Track extends Athletes {
     double hundredMeters;
     double twoHundredMeters;
     double fourHundredMeters;
-    String verified;
 
     public Track(String userName, String firstName, String lastName, double hundredMeters, double twoHundredMeters, double fourHundredMeters) {
         this.userName = userName;
@@ -334,16 +310,13 @@ class Track extends Athletes {
         this.hundredMeters = hundredMeters;
         this.twoHundredMeters = twoHundredMeters;
         this.fourHundredMeters = fourHundredMeters;
-        CreateAthleteFolder(firstName);
     }
 
-    public Track(String userName, String firstName, String LastName, String verified) {
+    public Track(String userName, String firstName, String LastName) {
         this.userName = userName;
         this.firstName = firstName;
         this.lastName = LastName;
         this.sport = "Track";
-        this.verified = verified;
-        CreateAthleteFolder(firstName);
     }
 
     public void athlete_menu() {
@@ -379,17 +352,10 @@ class Track extends Athletes {
         this.fourHundredMeters = fourHundredMeters;
     }
     
-    public void setVerification(String verification){
-        this.verified = verification;
-    }
-    
     public String getTimes(){
         return String.format("%s: %f\n%s: %f\n%s: %f", "100m Sprint",this.hundredMeters,"200m Sprint",this.twoHundredMeters,"400m Sprint",this.fourHundredMeters);
     }
     
-    public String getVerification(){
-        return this.verified;
-    }
     
     public void UploadTimes() throws IOException{
         ArrayList<String> time_list = new ArrayList<>(List.of("100mSprint:"+this.hundredMeters, "200mSprint:"+this.twoHundredMeters,"400mSprint:"+this.fourHundredMeters));

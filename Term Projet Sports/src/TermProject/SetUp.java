@@ -22,7 +22,7 @@ public class SetUp {
                         writer.write("test:123,");
                         writer.close();
         BufferedWriter writer_2 = new BufferedWriter(new FileWriter(home+"/desktop/SportsPlatform/LoginInformation/Users.txt", false));
-        writer_2.write("test:123:Swimming:test:noway:true,");
+        writer_2.write("test:123:Swimming:test:noway,");
         writer_2.close();
     }
     

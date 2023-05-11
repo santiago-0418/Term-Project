@@ -3,10 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package TermProject;
-import  TermProject.Verification.*;
-import  TermProject.UserStorage.*;
-import java.io.FileNotFoundException;
-import java.util.List;
+
 /**
  *
  * @author santiago
@@ -42,10 +39,9 @@ public class Administrator {
         this.password = password;
     }
 
-    public void admin_menu() throws FileNotFoundException {
+    public void admin_menu() {
         System.out.println("\n----------------------------------");
         System.out.println("Helo " + this.user_name + " You are now in the admin menu");
-        
     }
 
 }
