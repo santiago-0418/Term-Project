@@ -4,6 +4,9 @@
  */
 package TermProject;
 
+// IF YOU SEE THIS IT IS THE RIGHT VERSION
+
+
 import static TermProject.SetUp.first_time;
 import java.io.IOException;
 import java.util.*;
@@ -169,11 +172,11 @@ public class DriverClass {
                     break;
                 case 3:
                     System.out.println("--------------------------------------------------------------");
-                    System.out.printf("%s%15s\n%50s\n%50s\n%50s\n%s\n", "Choose from the following sports:", "1) Football", "2) Swimming", "3) Track", "Selection:");
+                    System.out.printf("%s%15s\n%50s\n%50s\n%50s\n", "Choose from the following sports:", "1) Football", "2) Swimming", "3) Track", "Selection:");
                     int choice1 = user_input.nextInt();
                     switch (choice1) {
                         case 1:
-                            System.out.printf("%s%15s\n%50s\n%50s\n%50s\n%s\n", "Which Test do you want to see", "1) 40 yard dash", "2) T-Test", "3) L-Test", "Selection:");
+                            System.out.printf("%s%15s\n%50s\n%50s\n%50s\n", "Which Test do you want to see", "1) 40 yard dash", "2) T-Test", "3) L-Test", "Selection:");
                             int choice2 = user_input.nextInt();
                             switch (choice2) {
                                 case 1:
