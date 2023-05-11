@@ -115,6 +115,28 @@ public class ReadWrite {
         
     }
     
+    public static String getVerification() throws FileNotFoundException{
+        String home = System.getProperty("user.home");
+        String path = home+"/desktop/SportsPlatform/Athletes/Verification.txt";
+        BufferedReader br = new BufferedReader(new FileReader(path));
+        try {
+            StringBuilder sb = new StringBuilder();
+            String line = br.readLine();
+
+
+            while (line != null) {
+                sb.append(line);
+                sb.append(System.lineSeparator());
+                line = br.readLine();
+            }
+            String everything = sb.toString();
+            br.close();
+            return everything;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
     public static void SaveUsers(HashMap<String,String> ls, List<Athletes> athletes) throws IOException{
         
         String home = System.getProperty("user.home");
@@ -129,15 +151,15 @@ public class ReadWrite {
                     
                     if(athlete.getUsername().equals(temp_ls.get(i)) && athlete.getClass()==Swimming.class)
                     {
-                        toWrite+=athlete.sport+":"+athlete.firstName+":"+athlete.lastName+",";
+                        toWrite+=athlete.sport+":"+athlete.firstName+":"+athlete.lastName+":"+athlete.verified+",";
                     }
                     else if(athlete.getUsername().equals(temp_ls.get(i)) && athlete.getClass()==Football.class)
                     {
-                        toWrite+=athlete.sport+":"+athlete.firstName+":"+athlete.lastName+",";                
+                        toWrite+=athlete.sport+":"+athlete.firstName+":"+athlete.lastName+":"+athlete.verified+",";                
                     }
                     else if(athlete.getUsername().equals(temp_ls.get(i)) && athlete.getClass()==Track.class)
                     {
-                        toWrite+=athlete.sport+":"+athlete.firstName+":"+athlete.lastName+",";
+                        toWrite+=athlete.sport+":"+athlete.firstName+":"+athlete.lastName+":"+athlete.verified+",";
                     }
                 }
         }
