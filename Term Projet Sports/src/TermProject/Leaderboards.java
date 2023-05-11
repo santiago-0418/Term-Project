@@ -20,11 +20,11 @@ public class Leaderboards {
         FootballAth = athletes.stream().filter(i -> i.getSport().equals("Football")).collect(Collectors.toList());
         Collections.sort(FootballAth, FortyYardComparator());
 
-        System.out.printf("%-25s %s", "Athlete Name:", "40 yard dash:");
+        System.out.printf("%-25s %s\n", "Athlete Name:", "40 yard dash:");
         for (Athletes e : FootballAth) {
             int place = 1;
 
-            System.out.printf("%d. %-25s %.2f%n", place++, e.firstName + " " + e.getLastName(), ((Football) e).getFortyYardDash());
+            System.out.printf("%d. %-25s %.2f\n", place++, e.firstName + " " + e.getLastName(), ((Football) e).getFortyYardDash());
         }
 
     }
@@ -35,7 +35,7 @@ public class Leaderboards {
         FootballAth = athletes.stream().filter(i -> i.getSport().equals("Football")).collect(Collectors.toList());
         Collections.sort(FootballAth, T_TestComparator());
 
-        System.out.printf("%-25s %s", "Athlete Name:", "T-Test time:");
+        System.out.printf("%-25s %s\n", "Athlete Name:", "T-Test time:");
         for (Athletes e : FootballAth) {
             int place = 1;
 
@@ -50,7 +50,7 @@ public class Leaderboards {
         FootballAth = athletes.stream().filter(i -> i.getSport().equals("Football")).collect(Collectors.toList());
         Collections.sort(FootballAth, L_TestComparator());
 
-        System.out.printf("%-25s %s", "Athlete Name:", "L-Test time:");
+        System.out.printf("%-25s %s\n", "Athlete Name:", "L-Test time:");
         for (Athletes e : FootballAth) {
             int place = 1;
 
@@ -65,7 +65,7 @@ public class Leaderboards {
         SwimmingAth = athletes.stream().filter(i -> i.getSport().equals("Swimming")).collect(Collectors.toList());
         Collections.sort(SwimmingAth, FourHundredIMComparator());
 
-        System.out.printf("%-25s %s", "Athlete Name:", "400 IM time:");
+        System.out.printf("%-25s %s\n", "Athlete Name:", "400 IM time:");
         for (Athletes e : SwimmingAth) {
             int place = 1;
 
@@ -80,7 +80,7 @@ public class Leaderboards {
         SwimmingAth = athletes.stream().filter(i -> i.getSport().equals("Swimming")).collect(Collectors.toList());
         Collections.sort(SwimmingAth, HundredFreeComparator());
 
-        System.out.printf("%-25s %s", "Athlete Name:", "100 Free time:");
+        System.out.printf("%-25s %s\n", "Athlete Name:", "100 Free time:");
         for (Athletes e : SwimmingAth) {
             int place = 1;
 
@@ -95,7 +95,7 @@ public class Leaderboards {
         SwimmingAth = athletes.stream().filter(i -> i.getSport().equals("Swimming")).collect(Collectors.toList());
         Collections.sort(SwimmingAth, HundredButterflyComparator());
 
-        System.out.printf("%-25s %s", "Athlete Name:", "100 Butterfly time:");
+        System.out.printf("%-25s %s\n", "Athlete Name:", "100 Butterfly time:");
         for (Athletes e : SwimmingAth) {
             int place = 1;
 
@@ -110,7 +110,7 @@ public class Leaderboards {
         TrackAth = athletes.stream().filter(i -> i.getSport().equals("Track")).collect(Collectors.toList());
         Collections.sort(TrackAth, HundredMetersComparator());
 
-        System.out.printf("%-25s %s", "Athlete Name:", "100 meters time:");
+        System.out.printf("%-25s %s\n", "Athlete Name:", "100 meters time:");
         for (Athletes e : TrackAth) {
             int place = 1;
 
@@ -125,7 +125,7 @@ public class Leaderboards {
         TrackAth = athletes.stream().filter(i -> i.getSport().equals("Track")).collect(Collectors.toList());
         Collections.sort(TrackAth, TwoHundredMetersComparator());
 
-        System.out.printf("%-25s %s", "Athlete Name:", "200 meters time:");
+        System.out.printf("%-25s %s\n", "Athlete Name:", "200 meters time:");
         for (Athletes e : TrackAth) {
             int place = 1;
 
@@ -140,7 +140,7 @@ public class Leaderboards {
         TrackAth = athletes.stream().filter(i -> i.getSport().equals("Track")).collect(Collectors.toList());
         Collections.sort(TrackAth, FourHundredMetersComparator());
 
-        System.out.printf("%-25s %s", "Athlete Name:", "400 meters time:");
+        System.out.printf("%-25s %s\n", "Athlete Name:", "400 meters time:");
         for (Athletes e : TrackAth) {
             int place = 1;
 
