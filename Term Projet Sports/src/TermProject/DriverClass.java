@@ -11,6 +11,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import TermProject.UserStorage.*;
+import TermProject.Leaderboards.*;
 
 /**
  *
@@ -30,11 +31,11 @@ public class DriverClass {
         String username;
         String password;
         String athlete_name;
-        
+
         //Verifying if folder exists or if first time usage
         String home = System.getProperty("user.home");
         Path path = Path.of(home + "/desktop/SportsPlatform");
-        if (Files.exists(path)!=true) {
+        if (Files.exists(path) != true) {
             first_time();
         }
 
@@ -52,7 +53,7 @@ public class DriverClass {
         //Displays the main menu
         do {
             System.out.printf("%s\n%50s\n%s\n%s%28s\n%46s\n%50s\n%54s\n%48s\n%46s\n%32s\n%s", "--------------------------------------------------------------", "Welcome to THE sports timing platform", "--------------------------------------------------------------",
-                     "Please make a selection:", "1) Login for administrators", "2) login for athletes", "3) Go to the leaderboards", "4) Search and athlete by name", "5) Athlete Registration", "6) Admin Registration", "7) Exit", "Selection: ");
+                    "Please make a selection:", "1) Login for administrators", "2) login for athletes", "3) Go to the leaderboards", "4) Search and athlete by name", "5) Athlete Registration", "6) Admin Registration", "7) Exit", "Selection: ");
             selection = user_input.nextInt();
             user_input.nextLine();
             //Main switch statement
@@ -96,16 +97,20 @@ public class DriverClass {
                     System.out.println("--------------------------------------------------------------");
                     System.out.printf("%s%15s\n%50s\n%50s\n%50s\n%s\n", "Choose from the following sports:", "1) Football", "2) Swimming", "3) Track", "Selection:");
                     int choice1 = user_input.nextInt();
-                    switch(choice1){
-                        case 1: 
+                    switch (choice1) {
+                        case 1:
                             System.out.printf("%s%15s\n%50s\n%50s\n%50s\n%s\n", "Which Test do you want to see", "1) 40 yard dash", "2) T-Test", "3) L-Test", "Selection:");
                             int choice2 = user_input.nextInt();
-                            switch(choice2){
-                                case 1: 
+                            switch (choice2) {
+                                case 1:
+                                    Leaderboards.PrintFootballForty(user_storage.athletes);
+                                case 2:
+                                    Leaderboards.PrintFootballT_Test(user_storage.athletes);
+                                case 3:
+                                    
                                     
                             }
-                            
-                            
+
                     }
                     //temp end
                     is_finished = true;
@@ -168,4 +173,5 @@ public class DriverClass {
         } while (is_finished != true);
 
     }
+
 }

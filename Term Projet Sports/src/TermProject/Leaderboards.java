@@ -14,7 +14,7 @@ import java.util.Collections;
  */
 public class Leaderboards {
 
-    public void PrintFootballForty(List<Athletes> athletes) {
+    public static void PrintFootballForty(List<Athletes> athletes) {
         List<Athletes> FootballAth;
 
         FootballAth = athletes.stream().filter(i -> i.getSport().equals("Football")).collect(Collectors.toList());
@@ -29,7 +29,7 @@ public class Leaderboards {
 
     }
 
-    public void PrintFootballT_Test(List<Athletes> athletes) {
+    public static void PrintFootballT_Test(List<Athletes> athletes) {
         List<Athletes> FootballAth;
 
         FootballAth = athletes.stream().filter(i -> i.getSport().equals("Football")).collect(Collectors.toList());
@@ -44,7 +44,7 @@ public class Leaderboards {
 
     }
 
-    public void PrintFootballL_Test(List<Athletes> athletes) {
+    public static void PrintFootballL_Test(List<Athletes> athletes) {
         List<Athletes> FootballAth;
 
         FootballAth = athletes.stream().filter(i -> i.getSport().equals("Football")).collect(Collectors.toList());
@@ -59,7 +59,7 @@ public class Leaderboards {
 
     }
 
-    public void PrintSwimmingFourHundredIM(List<Athletes> athletes) {
+    public static void PrintSwimmingFourHundredIM(List<Athletes> athletes) {
         List<Athletes> SwimmingAth;
 
         SwimmingAth = athletes.stream().filter(i -> i.getSport().equals("Swimming")).collect(Collectors.toList());
@@ -74,7 +74,7 @@ public class Leaderboards {
 
     }
 
-    public void PrintSwimmingHundredFree(List<Athletes> athletes) {
+    public static void PrintSwimmingHundredFree(List<Athletes> athletes) {
         List<Athletes> SwimmingAth;
 
         SwimmingAth = athletes.stream().filter(i -> i.getSport().equals("Swimming")).collect(Collectors.toList());
@@ -89,7 +89,7 @@ public class Leaderboards {
 
     }
 
-    public void PrintSwimmingHundredButterfly(List<Athletes> athletes) {
+    public static void PrintSwimmingHundredButterfly(List<Athletes> athletes) {
         List<Athletes> SwimmingAth;
 
         SwimmingAth = athletes.stream().filter(i -> i.getSport().equals("Swimming")).collect(Collectors.toList());
@@ -104,7 +104,7 @@ public class Leaderboards {
 
     }
 
-    public void PrintTrack100(List<Athletes> athletes) {
+    public static void PrintTrack100(List<Athletes> athletes) {
         List<Athletes> TrackAth;
 
         TrackAth = athletes.stream().filter(i -> i.getSport().equals("Track")).collect(Collectors.toList());
@@ -119,7 +119,7 @@ public class Leaderboards {
 
     }
 
-    public void PrintTrack200(List<Athletes> athletes) {
+    public static void PrintTrack200(List<Athletes> athletes) {
         List<Athletes> TrackAth;
 
         TrackAth = athletes.stream().filter(i -> i.getSport().equals("Track")).collect(Collectors.toList());
@@ -134,7 +134,7 @@ public class Leaderboards {
 
     }
 
-    public void PrintTrack400(List<Athletes> athletes) {
+    public static void PrintTrack400(List<Athletes> athletes) {
         List<Athletes> TrackAth;
 
         TrackAth = athletes.stream().filter(i -> i.getSport().equals("Track")).collect(Collectors.toList());
