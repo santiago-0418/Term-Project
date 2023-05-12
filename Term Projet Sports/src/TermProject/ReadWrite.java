@@ -48,14 +48,15 @@ public class ReadWrite {
         BufferedWriter writer = new BufferedWriter(new FileWriter(f_name, false));
 
         for(String s: ls){
+            System.out.println("test");
             //Gives Category
             //System.out.println(s.substring(0, s.indexOf(":")));
-            writer.append(s.substring(0, s.indexOf(":")));
-            writer.append(":");
-            writer.append(s.substring(s.indexOf(":")+1));
+            writer.write(s.substring(0, s.indexOf(":")));
+            writer.write(":");
+            writer.write(s.substring(s.indexOf(":")+1));
             //Gives time in seconds
             //System.out.println(s.substring(s.indexOf(":")+1));
-            writer.append(',');
+            writer.write(',');
         }
         //writer.append(section+":"+time);
         writer.close();

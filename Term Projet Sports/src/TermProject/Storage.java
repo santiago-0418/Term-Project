@@ -130,7 +130,7 @@ class UserStorage{
             String l_name = temp_ls.get(4);
             String verified = temp_ls.get(5);
             hs.put(key,value);
-            
+            //FOUND THE PROBLEM!!!!!!!!!
             switch(sport){                
                     case "Football":
                         athletes.add(new Football(key,f_name, l_name, verified));
@@ -145,6 +145,18 @@ class UserStorage{
                         System.out.println("Something Broke");
                         break;
                 }
+            for(Athletes a: athletes){
+                if(a.getClass()==Swimming.class)
+                {
+                 ((Swimming)a).setTimes();
+                }
+                else if(a.getClass()==Football.class){
+                    ((Football)a).setTimes();
+                }
+                else if(a.getClass()==Track.class){
+                    ((Track)a).setTimes();
+                }
+            }
             System.out.println("key "+key + " value "+value +" sport "+sport);
         }
         System.out.println(hs);
