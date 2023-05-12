@@ -176,7 +176,7 @@ public class DriverClass {
 
                     }
                     //temp end
-                    is_finished = true;
+                    
                     break;
                 case 4:
                     System.out.println("--------------------------------------------------------------");
