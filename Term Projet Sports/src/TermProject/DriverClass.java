@@ -121,11 +121,11 @@ public class DriverClass {
                             ((Track) temp_list.get(selection2 - 1)).ModifyTimes();
                         }
 
-                        System.out.println("Loging in is working!");
+                        //System.out.println("Loging in is working!");
                         //is_finished = true;
                         break;
                     } else {
-                        System.out.println("Something broke or wrong password");
+                        System.out.println("Wrong password or Username");
                         break;
                     }
 
@@ -140,9 +140,9 @@ public class DriverClass {
                     password = user_input.nextLine();
                     //Calling UserStorage
                     if (user_storage.login(username, password)) {
-                        System.out.println("Loging in is working!");
+                        //System.out.println("Loging in is working!");
                     } else {
-                        System.out.println("Something broke or wrong password");
+                        System.out.println("Wrong password or Username");
                         break;
                     }
                     //temp end
