@@ -125,7 +125,7 @@ public class DriverClass {
                         //is_finished = true;
                         break;
                     } else {
-                        System.out.println("Something broke or wrong password");
+                        System.out.println("wrong password");
                         break;
                     }
 
@@ -142,7 +142,7 @@ public class DriverClass {
                     if (user_storage.login(username, password)) {
                         System.out.println("Loging in is working!");
                     } else {
-                        System.out.println("Something broke or wrong password");
+                        System.out.println("Wrong password");
                         break;
                     }
                     //temp end
