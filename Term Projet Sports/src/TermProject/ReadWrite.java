@@ -48,7 +48,7 @@ public class ReadWrite {
         BufferedWriter writer = new BufferedWriter(new FileWriter(f_name, false));
 
         for(String s: ls){
-            System.out.println("test");
+            //System.out.println("test");
             //Gives Category
             //System.out.println(s.substring(0, s.indexOf(":")));
             writer.write(s.substring(0, s.indexOf(":")));

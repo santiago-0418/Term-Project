@@ -32,7 +32,7 @@ class AdminStorage {
     //Initializing the list of administrators (will later be read from a file)
     public void init_admin_storage() throws FileNotFoundException{
         admin_storage = RestoreAdmins();
-        System.out.println(admin_storage);
+        //System.out.println(admin_storage);
     }
     
     public HashMap RestoreAdmins() throws FileNotFoundException{
@@ -110,7 +110,7 @@ class UserStorage{
     
     public void init_user_storage() throws FileNotFoundException{
         user_storage = RestoreUsers();
-        System.out.println(user_storage);
+        //System.out.println(user_storage);
     }
     
     public  HashMap RestoreUsers() throws FileNotFoundException{
@@ -121,7 +121,7 @@ class UserStorage{
         //System.out.println(temp_storage);
         for(String s: temp_storage){
             ArrayList<String> temp_ls = new ArrayList<>(Arrays.asList(s.split(":")));
-            System.out.println(temp_ls);
+            //System.out.println(temp_ls);
             //System.out.println(s.substring(0, s.indexOf(":")));
             String key = temp_ls.get(0);
             String value = temp_ls.get(1);
@@ -157,9 +157,9 @@ class UserStorage{
                     ((Track)a).setTimes();
                 }
             }
-            System.out.println("key "+key + " value "+value +" sport "+sport);
+            //System.out.println("key "+key + " value "+value +" sport "+sport);
         }
-        System.out.println(hs);
+        //System.out.println(hs);
         
         return hs;
     }
@@ -283,7 +283,7 @@ class UserStorage{
     public void SaveChanges(List funnylist) throws IOException{
         SaveUsers(user_storage, funnylist);
         for(int i=0; i<funnylist.size();i++){
-            System.out.println(funnylist.get(i));
+            //System.out.println(funnylist.get(i));
         }
     }
     
