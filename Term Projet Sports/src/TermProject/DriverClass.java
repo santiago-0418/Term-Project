@@ -20,6 +20,33 @@ import TermProject.Leaderboards.*;
  */
 public class DriverClass {
 
+    //method for exception handling
+    public static int UserInput(int start, int end) {
+        Scanner user_input = new Scanner(System.in);
+
+        int input = 0;
+        boolean valueFound = true;
+
+        while (valueFound) {
+            System.out.print("Selection: ");
+            try {
+                input = user_input.nextInt();
+                if (input < start || input > end) {
+                    throw new InputMismatchException();
+
+                } else {
+                    return input;
+                }
+
+            } catch (InputMismatchException e) {
+                System.out.println("Incorrect input, please try again and enter one of the specified digits");
+                user_input.nextLine();
+
+            }
+        }
+        return input;
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -54,10 +81,12 @@ public class DriverClass {
         //Main window loop
         //Displays the main menu
         do {
-            System.out.printf("%s\n%50s\n%s\n%s%28s\n%46s\n%50s\n%54s\n%48s\n%46s\n%32s\n%s", "--------------------------------------------------------------", "Welcome to THE sports timing platform", "--------------------------------------------------------------",
-                    "Please make a selection:", "1) Login for administrators", "2) login for athletes", "3) Go to the leaderboards", "4) Search and athlete by name", "5) Athlete Registration", "6) Admin Registration", "7) Exit", "Selection: ");
-            selection = user_input.nextInt();
-            user_input.nextLine();
+            System.out.printf("%s\n%50s\n%s\n%s%28s\n%46s\n%50s\n%54s\n%48s\n%46s\n%32s\n", "--------------------------------------------------------------", "Welcome to THE sports timing platform", "--------------------------------------------------------------",
+                    "Please make a selection:", "1) Login for administrators", "2) login for athletes", "3) Go to the leaderboards", "4) Search and athlete by name", "5) Athlete Registration", "6) Admin Registration", "7) Exit");
+
+            //selection = user_input.nextInt();
+            //user_input.nextLine();
+            selection = UserInput(1, 7);
             //Main switch statement
             switch (selection) {
                 case 1:
@@ -78,8 +107,9 @@ public class DriverClass {
                             System.out.println(count + ") " + athlete.firstName);
                             count++;
                         }
-                        System.out.print("selection: ");
-                        selection2 = user_input.nextInt();
+                        //System.out.print("selection: ");
+                        //selection2 = user_input.nextInt();
+                        selection2 = UserInput(1,count);
 
                         if (temp_list.get(selection2 - 1).getClass() == Swimming.class) {
                             ((Swimming) temp_list.get(selection2 - 1)).ModifyTimes();
@@ -120,12 +150,14 @@ public class DriverClass {
                     break;
                 case 3:
                     System.out.println("--------------------------------------------------------------");
-                    System.out.printf("%s\n%-15s\n%-15s\n%-15s\n%s", "Choose from the following sports:", "1) Football", "2) Swimming", "3) Track", "Selection:");
-                    int choice1 = user_input.nextInt();
+                    System.out.printf("%s\n%-15s\n%-15s\n%-15s\n", "Choose from the following sports:", "1) Football", "2) Swimming", "3) Track");
+                    //int choice1 = user_input.nextInt();
+                    int choice1 = UserInput(1,3);
                     switch (choice1) {
                         case 1:
-                            System.out.printf("%s\n%-15s\n%-15s\n%-15s\n%s", "Which Test do you want to see", "1) 40 yard dash", "2) T-Test", "3) L-Test", "Selection:");
-                            int choice2 = user_input.nextInt();
+                            System.out.printf("%s\n%-15s\n%-15s\n%-15s\n", "Which Test do you want to see", "1) 40 yard dash", "2) T-Test", "3) L-Test");
+                            //int choice2 = user_input.nextInt();
+                            int choice2 = UserInput(1,3);
                             switch (choice2) {
                                 case 1:
                                     Leaderboards.PrintFootballForty(user_storage.athletes);
@@ -140,8 +172,9 @@ public class DriverClass {
 
                             break;
                         case 2:
-                            System.out.printf("%s%-15s\n%-15s\n%-15s\n%-15s\n%s", "Which Time do you want to see", "1) 400 IM", "2) 100 Free", "3) 100 Butterfly", "Selection:");
-                            int choice3 = user_input.nextInt();
+                            System.out.printf("%s%-15s\n%-15s\n%-15s\n", "Which Time do you want to see", "1) 400 IM", "2) 100 Free", "3) 100 Butterfly");
+                            //int choice3 = user_input.nextInt();
+                            int choice3 = UserInput(1,3);
                             switch (choice3) {
                                 case 1:
                                     Leaderboards.PrintSwimmingFourHundredIM(user_storage.athletes);
@@ -157,8 +190,9 @@ public class DriverClass {
 
                             break;
                         case 3:
-                            System.out.printf("%s%-15s\n%-15\n%-15\n%-15\n%s", "Which Time do you want to see", "1) 100 meters", "2) 200 meters", "3) 400 meters", "Selection:");
-                            int choice4 = user_input.nextInt();
+                            System.out.printf("%s%-15s\n%-15s\n%-15s\n", "Which Time do you want to see", "1) 100 meters", "2) 200 meters", "3) 400 meters");
+                            //int choice4 = user_input.nextInt();
+                            int choice4 = UserInput(1,3);
                             switch (choice4) {
                                 case 1:
                                     Leaderboards.PrintTrack100(user_storage.athletes);
@@ -176,7 +210,7 @@ public class DriverClass {
 
                     }
                     //temp end
-                    
+
                     break;
                 case 4:
                     System.out.println("--------------------------------------------------------------");
