@@ -168,17 +168,23 @@ class Football extends Athletes {
         switch(selection){
             case "1":
                 System.out.print("Enter your new time: ");
+                try{
                 this.setFortyYardDash(Double.parseDouble(user_input.nextLine()));
+                }catch(Exception e){System.out.println("Invalid input");}
                 this.UploadTimes();
                 break;
             case "2":
                 System.out.print("Enter your new time: ");
+                try{
                 this.setT_Test(Double.parseDouble(user_input.nextLine()));
+                }catch(Exception e){System.out.println("Invalid input");}
                 this.UploadTimes();
                 break;
             case "3":
                 System.out.print("Enter your new time: ");
+                try{
                 this.setL_Test(Double.parseDouble(user_input.nextLine()));
+                }catch(Exception e){System.out.println("Invalid input");}
                 this.UploadTimes();
                 break;
             case "0":
@@ -298,17 +304,23 @@ class Swimming extends Athletes {
         switch(selection){
             case "1":
                 System.out.print("Enter your new time: ");
+                try{
                 this.setFourHundredIM(Double.parseDouble(user_input.nextLine()));
+                }catch(Exception e){System.out.println("Invalid input");}
                 this.UploadTimes();
                 break;
             case "2":
                 System.out.print("Enter your new time: ");
+                try{
                 this.setHundredFree(Double.parseDouble(user_input.nextLine()));
+                }catch(Exception e){System.out.println("Invalid input");}
                 this.UploadTimes();
                 break;
             case "3":
                 System.out.print("Enter your new time: ");
+                try{
                 this.setHundredButterfly(Double.parseDouble(user_input.nextLine()));
+                }catch(Exception e){System.out.println("Invalid input");}
                 this.UploadTimes();
                 break;
             case "0":
@@ -427,17 +439,23 @@ class Track extends Athletes {
         switch(selection){
             case "1":
                 System.out.print("Enter your new time: ");
+                try{
                 this.setHundredMeters(Double.parseDouble(user_input.nextLine()));
+                }catch(Exception e){System.out.println("Invalid input");}
                 this.UploadTimes();
                 break;
             case "2":
                 System.out.print("Enter your new time: ");
+                try{
                 this.setTwoHundredMeters(Double.parseDouble(user_input.nextLine()));
+                }catch(Exception e){System.out.println("Invalid input");}
                 this.UploadTimes();
                 break;
             case "3":
                 System.out.print("Enter your new time: ");
+                try{
                 this.setFourHundredMeters(Double.parseDouble(user_input.nextLine()));
+                }catch(Exception e){System.out.println("Invalid input");}
                 this.UploadTimes();
                 break;
             case "0":
