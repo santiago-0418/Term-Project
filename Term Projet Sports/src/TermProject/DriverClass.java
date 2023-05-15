@@ -172,7 +172,7 @@ public class DriverClass {
 
                             break;
                         case 2:
-                            System.out.printf("%s%-15s\n%-15s\n%-15s\n", "Which Time do you want to see", "1) 400 IM", "2) 100 Free", "3) 100 Butterfly");
+                            System.out.printf("%s\n%-15s\n%-15s\n%-15s\n", "Which Time do you want to see", "1) 400 IM", "2) 100 Free", "3) 100 Butterfly");
                             //int choice3 = user_input.nextInt();
                             int choice3 = UserInput(1,3);
                             switch (choice3) {
