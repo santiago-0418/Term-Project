@@ -293,14 +293,22 @@ class UserStorage{
             if(athlete.lastName.equals(l_name) && athlete.getClass()==Swimming.class){
                 ((Swimming)athlete).setTimes();
                 System.out.println(athlete.firstName+" "+athlete.lastName+" times are:\n" + ((Swimming)athlete).getTimes());
+                break;
             }
             else if(athlete.lastName.equals(l_name) && athlete.getClass()==Football.class){
                 ((Football)athlete).setTimes();
                 System.out.println(athlete.firstName+" "+athlete.lastName+" times are:\n" + ((Football)athlete).getTimes());
+                break;
             }
             else if(athlete.lastName.equals(l_name) && athlete.getClass()==Track.class){
                 ((Track)athlete).setTimes();
                 System.out.println(athlete.firstName+" "+athlete.lastName+" times are:\n" + ((Track)athlete).getTimes());
+                break;
+            }
+            
+            else{
+                System.out.println("User not Found");
+                break;
             }
         }
     }
