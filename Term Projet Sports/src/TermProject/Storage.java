@@ -176,7 +176,7 @@ class UserStorage{
             do{
                 System.out.print("Select which sport you want to participate in: ");
                 System.out.printf("%s\n%58s\n%55s\n%s","1) Football", "2) Swimming","3) Track","Selection: ");
-                sport_selection = user_input.nextInt();
+                sport_selection = DriverClass.UserInput(1, 3);
                 switch(sport_selection){                
                     case 1:
                         athletes.add(new Football(user,first_name, last_name, "false"));

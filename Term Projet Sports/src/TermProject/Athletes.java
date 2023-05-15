@@ -129,7 +129,7 @@ class Football extends Athletes {
     }
     
     public String getTimes(){
-        return String.format("%s: %f\n%s: %f\n%s: %f", "Forty Yard Dash",this.fortyYardDash,"T Test",this.T_Test,"L Test",this.L_Test);
+        return String.format("%s: %.2fs\n%s: %.2fs\n%s: %.2fs", "Forty Yard Dash",this.fortyYardDash,"T Test",this.T_Test,"L Test",this.L_Test);
     }
     
     public void UploadTimes() throws IOException{
